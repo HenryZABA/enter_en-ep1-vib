@@ -295,13 +295,13 @@ export default function GroupEditor() {
 
                       {/* Remove button (top-right) */}
                       <button
-                        className="absolute top-0.5 right-0.5 opacity-0 group-hover:opacity-100 transition-opacity rounded-full p-0.5 hover:bg-destructive/10 z-10"
+                        className="absolute top-0.5 right-0.5 opacity-0 group-hover:opacity-100 transition-opacity rounded-full p-0.5 bg-destructive hover:bg-destructive/80 z-10"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRemove(position);
                         }}
                       >
-                        <X className="h-3 w-3 text-destructive" />
+                        <X className="h-3 w-3 text-white" />
                       </button>
                     </div>
                   );
