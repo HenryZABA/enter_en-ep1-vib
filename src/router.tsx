@@ -1,17 +1,29 @@
 import NotFound from "./pages/NotFound";
 import SlideContainer from "./pages/SlideContainer";
-import { Navigate } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import GroupEditor from "./pages/GroupEditor";
+import GroupPlayer from "./pages/GroupPlayer";
 
 export const routers = [
     {
       path: "/",
       name: 'home',
-      element: <Navigate to="/slide/1" replace />,
+      element: <Dashboard />,
     },
     {
       path: "/slide/:id",
       name: 'slide',
       element: <SlideContainer />,
+    },
+    {
+      path: "/group/:groupId",
+      name: 'group-editor',
+      element: <GroupEditor />,
+    },
+    {
+      path: "/group/:groupId/play/:slideIndex",
+      name: 'group-player',
+      element: <GroupPlayer />,
     },
     /* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */
     {
