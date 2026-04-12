@@ -7,6 +7,8 @@ export interface SlideGroup {
 }
 
 const STORAGE_KEY = "slide-groups";
+const VERSION_KEY = "slide-groups-version";
+const CURRENT_VERSION = 2; // bump this when defaults change
 
 function generateId(): string {
   return crypto.randomUUID();
@@ -19,22 +21,25 @@ function getDefaultGroups(): SlideGroup[] {
     { id: generateId(), name: "分享会", slideIndices: [...vcIndices] },
     { id: generateId(), name: "答辩", slideIndices: [...originalIndices] },
     { id: generateId(), name: "4.16 Workshop", slideIndices: [...originalIndices] },
-    { id: generateId(), name: "用户画像分析", slideIndices: [...vcIndices] },
   ];
 }
 
 function loadGroups(): SlideGroup[] {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as SlideGroup[];
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    const savedVersion = Number(localStorage.getItem(VERSION_KEY) || "0");
+    if (savedVersion >= CURRENT_VERSION) {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as SlideGroup[];
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
     }
   } catch {
     // ignore
   }
   const defaults = getDefaultGroups();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
+  localStorage.setItem(VERSION_KEY, String(CURRENT_VERSION));
   return defaults;
 }
 
