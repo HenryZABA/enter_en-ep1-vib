@@ -14,6 +14,8 @@ import {
   SlideNavigation,
   SlidePageIndicator,
 } from "@/components/slides";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export default function GroupPlayer() {
   const { groupId, slideIndex } = useParams();
@@ -147,6 +149,20 @@ export default function GroupPlayer() {
         note={slideNotes[masterIndex]}
         show={showPageIndicator}
       />
+
+      {/* Back button */}
+      <Button
+        variant="ghost"
+        size="sm"
+        className="absolute top-3 left-3 z-50 opacity-0 hover:opacity-100 transition-opacity text-muted-foreground hover:text-foreground"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/group/${groupId}`);
+        }}
+      >
+        <ArrowLeft className="h-4 w-4 mr-1" />
+        Back
+      </Button>
 
       <div className="h-full w-full p-4 md:p-12">
         {isInteractiveSlide ? (
