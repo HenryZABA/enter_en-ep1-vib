@@ -95,6 +95,20 @@ export function useGroups() {
     []
   );
 
+  const insertSlides = useCallback(
+    (groupId: string, afterPosition: number, slideIndices: number[]) => {
+      setGroups((prev) =>
+        prev.map((g) => {
+          if (g.id !== groupId) return g;
+          const newArr = [...g.slideIndices];
+          newArr.splice(afterPosition + 1, 0, ...slideIndices);
+          return { ...g, slideIndices: newArr };
+        })
+      );
+    },
+    []
+  );
+
   const getGroup = useCallback(
     (groupId: string) => groups.find((g) => g.id === groupId),
     [groups]
@@ -108,6 +122,7 @@ export function useGroups() {
     addSlide,
     removeSlide,
     reorderSlides,
+    insertSlides,
     getGroup,
   };
 }
