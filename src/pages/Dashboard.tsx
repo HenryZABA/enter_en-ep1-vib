@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Plus, Play, Pencil, Trash2, Layers, Library, Eye } from "lucide-react";
+import { SlideThumbnail } from "@/components/slides/SlideThumbnail";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -157,15 +158,10 @@ export default function Dashboard() {
                   onClick={() => setPreviewIndex(index)}
                 >
                   {/* Miniature slide preview */}
-                  <div className="aspect-video overflow-hidden pointer-events-none relative">
-                    <div
-                      className="w-[1920px] h-[1080px] origin-top-left bg-background"
-                      style={{ transform: "scale(0.1)", transformOrigin: "top left" }}
-                    >
-                      <SlideComponent />
-                    </div>
+                  <div className="relative">
+                    <SlideThumbnail Component={SlideComponent} />
                     {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                       <Eye className="h-5 w-5 text-primary" />
                     </div>
                   </div>
@@ -254,19 +250,11 @@ export default function Dashboard() {
             </DialogDescription>
           </DialogHeader>
           <div className="px-6 pb-6">
-            <div className="aspect-video border rounded-lg overflow-hidden relative bg-background">
-              <div
-                className="w-[1920px] h-[1080px] origin-top-left pointer-events-none"
-                style={{
-                  transform: "scale(0.44)",
-                  transformOrigin: "top left",
-                }}
-              >
-                {previewIndex !== null && (() => {
-                  const SlideComp = slides[previewIndex];
-                  return <SlideComp />;
-                })()}
-              </div>
+            <div className="border rounded-lg overflow-hidden bg-background">
+              {previewIndex !== null && (() => {
+                const SlideComp = slides[previewIndex];
+                return <SlideThumbnail Component={SlideComp} />;
+              })()}
             </div>
             <div className="flex items-center justify-between mt-4">
               <Button

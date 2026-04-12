@@ -14,6 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { SlideThumbnail } from "@/components/slides/SlideThumbnail";
 import { ArrowLeft, Play, Plus, X, Check, GripVertical } from "lucide-react";
 
 export default function GroupEditor() {
@@ -263,23 +264,15 @@ export default function GroupEditor() {
                       </div>
 
                       {/* Rendered thumbnail */}
-                      <div
+                      <SlideThumbnail
+                        Component={SlideComp}
                         className={cn(
-                          "flex-1 aspect-video rounded border overflow-hidden relative",
+                          "flex-1 rounded border",
                           position === safePosition
                             ? "border-primary"
                             : "border-border"
                         )}
-                      >
-                        <div
-                          className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background"
-                          style={{
-                            transform: "scale(0.094)",
-                          }}
-                        >
-                          <SlideComp />
-                        </div>
-                      </div>
+                      />
 
                       {/* Insert button (top-left) */}
                       <button
@@ -348,15 +341,13 @@ export default function GroupEditor() {
                     key={masterIdx}
                     onClick={() => handleToggleSlide(masterIdx)}
                     className={cn(
-                      "relative aspect-video rounded-lg border-2 overflow-hidden transition-all hover:scale-105",
+                      "relative rounded-lg border-2 overflow-hidden transition-all hover:scale-105",
                       isInGroup
                         ? "border-primary ring-2 ring-primary/30"
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <div className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)" }}>
-                      <SlideComp />
-                    </div>
+                    <SlideThumbnail Component={SlideComp} />
                     {/* Overlay info */}
                     <div className={cn(
                       "absolute bottom-0 left-0 right-0 px-1 py-0.5 text-[9px] line-clamp-1",
@@ -395,15 +386,13 @@ export default function GroupEditor() {
                     key={masterIdx}
                     onClick={() => toggleInsertSlide(masterIdx)}
                     className={cn(
-                      "relative aspect-video rounded-lg border-2 overflow-hidden transition-all hover:scale-105",
+                      "relative rounded-lg border-2 overflow-hidden transition-all hover:scale-105",
                       isSelected
                         ? "border-primary ring-2 ring-primary/30"
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <div className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)" }}>
-                      <SlideComp />
-                    </div>
+                    <SlideThumbnail Component={SlideComp} />
                     <div className={cn(
                       "absolute bottom-0 left-0 right-0 px-1 py-0.5 text-[9px] line-clamp-1",
                       isSelected ? "bg-primary/80 text-primary-foreground" : "bg-background/80 text-muted-foreground"
