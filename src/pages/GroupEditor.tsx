@@ -272,10 +272,9 @@ export default function GroupEditor() {
                         )}
                       >
                         <div
-                          className="w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background"
+                          className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background"
                           style={{
                             transform: "scale(0.094)",
-                            transformOrigin: "top left",
                           }}
                         >
                           <SlideComp />
@@ -355,7 +354,7 @@ export default function GroupEditor() {
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <div className="w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)", transformOrigin: "top left" }}>
+                    <div className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)" }}>
                       <SlideComp />
                     </div>
                     {/* Overlay info */}
@@ -402,7 +401,7 @@ export default function GroupEditor() {
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <div className="w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)", transformOrigin: "top left" }}>
+                    <div className="absolute top-0 left-0 w-[1920px] h-[1080px] origin-top-left pointer-events-none bg-background" style={{ transform: "scale(0.08)" }}>
                       <SlideComp />
                     </div>
                     <div className={cn(
