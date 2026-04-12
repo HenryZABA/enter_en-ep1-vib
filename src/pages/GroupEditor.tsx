@@ -325,14 +325,14 @@ export default function GroupEditor() {
 
       {/* Add Slides Dialog (toggle mode) */}
       <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col">
-          <DialogHeader>
+        <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col overflow-hidden">
+          <DialogHeader className="shrink-0">
             <DialogTitle>Add Slides</DialogTitle>
             <DialogDescription>
               Click slides to add or remove them from this group.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="flex-1 -mx-6 px-6">
+          <ScrollArea className="flex-1 min-h-0 -mx-6 px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 py-2">
               {slides.map((SlideComp, masterIdx) => {
                 const isInGroup = groupSlideSet.has(masterIdx);
@@ -370,14 +370,14 @@ export default function GroupEditor() {
 
       {/* Insert Slides Dialog */}
       <Dialog open={insertDialogOpen} onOpenChange={setInsertDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col">
-          <DialogHeader>
+        <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col overflow-hidden">
+          <DialogHeader className="shrink-0">
             <DialogTitle>Insert Slides</DialogTitle>
             <DialogDescription>
               Select slides to insert after position {insertAfterPosition + 1}. You can select multiple.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="flex-1 -mx-6 px-6">
+          <ScrollArea className="flex-1 min-h-0 -mx-6 px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 py-2">
               {slides.map((SlideComp, masterIdx) => {
                 const isSelected = insertSelected.includes(masterIdx);
