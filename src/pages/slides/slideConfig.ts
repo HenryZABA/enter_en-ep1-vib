@@ -25,7 +25,24 @@ import { Slide27bWorkshop } from "./Slide27bWorkshop";
 import { Slide28End } from "./Slide28End";
 import { Slide29Evolution } from "./Slide29Evolution";
 
-// All slides in order
+// VC Series imports
+import { SlideVC01Cover } from "./SlideVC01Cover";
+import { SlideVC02Part1 } from "./SlideVC02Part1";
+import { SlideVC03Abstract } from "./SlideVC03Abstract";
+import { SlideVC04Insight } from "./SlideVC04Insight";
+import { SlideVC05Part2 } from "./SlideVC05Part2";
+import { SlideVC06Modes } from "./SlideVC06Modes";
+import { SlideVC07Compare } from "./SlideVC07Compare";
+import { SlideVC08Part3 } from "./SlideVC08Part3";
+import { SlideVC09DonutChart } from "./SlideVC09DonutChart";
+import { SlideVC10BarChart } from "./SlideVC10BarChart";
+import { SlideVC11Timeline } from "./SlideVC11Timeline";
+import { SlideVC12Part4 } from "./SlideVC12Part4";
+import { SlideVC13Trends } from "./SlideVC13Trends";
+import { SlideVC14Projects } from "./SlideVC14Projects";
+import { SlideVC15End } from "./SlideVC15End";
+
+// All slides in order (original + VC series)
 export const slides = [
   Slide01Cover,
   Slide02WhatIsShi,
@@ -52,7 +69,23 @@ export const slides = [
   Slide27Part6Cover,
   Slide29Evolution,
   Slide27bWorkshop,
-  Slide28End
+  Slide28End,
+  // VC Series - 用户画像分析 (index 26-40)
+  SlideVC01Cover,
+  SlideVC02Part1,
+  SlideVC03Abstract,
+  SlideVC04Insight,
+  SlideVC05Part2,
+  SlideVC06Modes,
+  SlideVC07Compare,
+  SlideVC08Part3,
+  SlideVC09DonutChart,
+  SlideVC10BarChart,
+  SlideVC11Timeline,
+  SlideVC12Part4,
+  SlideVC13Trends,
+  SlideVC14Projects,
+  SlideVC15End,
 ];
 
 // Section names for each slide (empty string means no indicator)
@@ -84,6 +117,26 @@ export const sectionNames: string[] = [
   "", // Slide 29: Workshop Time
   "" // Slide 30: End
 ];
+
+// VC series section names (indices 26-40)
+const vcSectionNames = [
+  "", // VC01: Cover
+  "Part 1 个人感悟", // VC02
+  "Part 1 个人感悟", // VC03
+  "Part 1 个人感悟", // VC04
+  "Part 2 构建模式", // VC05
+  "Part 2 构建模式", // VC06
+  "Part 2 构建模式", // VC07
+  "Part 3 数据洞察", // VC08
+  "Part 3 数据洞察", // VC09
+  "Part 3 数据洞察", // VC10
+  "Part 3 数据洞察", // VC11
+  "Part 4 机会与展望", // VC12
+  "Part 4 机会与展望", // VC13
+  "Part 4 机会与展望", // VC14
+  "", // VC15: End
+];
+sectionNames.push(...vcSectionNames);
 
 // Slides that have internal navigation (step-based)
 export const interactiveSlideIndices = [25]; // Slide28End (now index 25)
@@ -126,3 +179,23 @@ export const slideTitles: string[] = [
   "Workshop Time",
   "Thank You All"
 ];
+
+// VC series slide titles (indices 26-40)
+const vcSlideTitles = [
+  "用户画像分析",
+  "Part 1 个人感悟",
+  "从抽象到具体",
+  "核心洞察",
+  "Part 2 用户构建模式",
+  "三种构建模式",
+  "自助餐式 vs 学习调研式",
+  "Part 3 数据洞察",
+  "Enter 用户画像分布",
+  "非开发者身份画像",
+  "Reddit 增长数据",
+  "Part 4 机会与展望",
+  "社交媒体趋势",
+  "项目展示",
+  "谢谢",
+];
+slideTitles.push(...vcSlideTitles);

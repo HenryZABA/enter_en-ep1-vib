@@ -25,10 +25,27 @@ export { Slide27bWorkshop } from "./Slide27bWorkshop";
 export { Slide28End } from "./Slide28End";
 export { Slide29Evolution } from "./Slide29Evolution";
 
+// VC Series - 用户画像分析
+export { SlideVC01Cover } from "./SlideVC01Cover";
+export { SlideVC02Part1 } from "./SlideVC02Part1";
+export { SlideVC03Abstract } from "./SlideVC03Abstract";
+export { SlideVC04Insight } from "./SlideVC04Insight";
+export { SlideVC05Part2 } from "./SlideVC05Part2";
+export { SlideVC06Modes } from "./SlideVC06Modes";
+export { SlideVC07Compare } from "./SlideVC07Compare";
+export { SlideVC08Part3 } from "./SlideVC08Part3";
+export { SlideVC09DonutChart } from "./SlideVC09DonutChart";
+export { SlideVC10BarChart } from "./SlideVC10BarChart";
+export { SlideVC11Timeline } from "./SlideVC11Timeline";
+export { SlideVC12Part4 } from "./SlideVC12Part4";
+export { SlideVC13Trends } from "./SlideVC13Trends";
+export { SlideVC14Projects } from "./SlideVC14Projects";
+export { SlideVC15End } from "./SlideVC15End";
+
 export {
   slides,
   sectionNames,
   interactiveSlideIndices,
   slideNotes,
-  slideTitles
+  slideTitles,
 } from "./slideConfig";
