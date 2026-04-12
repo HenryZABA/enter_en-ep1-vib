@@ -1,0 +1,20 @@
+// 预定义的产品数据
+export const PRODUCTS = {
+  enter: { name: "Enter", desc: "Vibe Coding", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/tab-icon_4837.png" },
+  github: { name: "Github", desc: "版本管理", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/github_c971_3ad0.png" },
+  vercel: { name: "Vercel", desc: "部署分发", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/vercel_ce61_5c27.png" },
+  supabase: { name: "Supabase", desc: "数据服务", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/supabase_82f1_7679.jpg" },
+  posthog: { name: "PostHog", desc: "埋点分析", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/posthog_cfd7_ae16.jpg" },
+  stripe: { name: "Stripe", desc: "支付演示", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/stripe_4f45_349a.jpg" },
+  ga: { name: "Google Analytics", desc: "埋点演示", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/ga_9cf2_cac3.jpg" },
+  baidu: { name: "百度站长", desc: "提交站点", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/baidu_ac52_38ea.jpg" },
+  google: { name: "Google Search", desc: "提交站点", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/google_555b_e955.jpg" },
+  alibabacloud: { name: "阿里云", desc: "云平台", logo: "/icons/alibabacloud.svg" },
+  volcengine: { name: "火山引擎", desc: "云平台", logo: "/icons/volcengine.svg" },
+  cloudflare: { name: "Cloudflare", desc: "云平台", logo: "/icons/cloudflare.svg" },
+  bing: { name: "Bing", desc: "提交站点", logo: "/icons/bing.svg" },
+  alipay: { name: "支付宝", desc: "支付演示", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/zhifubao_553e.jpg" },
+  wechatpay: { name: "微信支付", desc: "支付演示", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/wechatpay-2_cce9.png" },
+  cursor: { name: "Cursor", desc: "Vibe Coding", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/cursor logo_db6b.jpg" },
+  claude: { name: "Claude", desc: "AI 大模型", logo: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100000002/claude-logo_bb9f.png" },
+};
