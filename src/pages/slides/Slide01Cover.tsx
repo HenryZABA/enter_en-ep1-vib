@@ -11,7 +11,6 @@ export const Slide01Cover = () => <div className="flex flex-col justify-between 
     {/* Bottom Right: Info */}
     <div className="flex flex-col items-start space-y-1 md:space-y-2 text-base md:text-xl lg:text-2xl font-medium text-muted-foreground mb-4 md:mb-12">
       <p>Enter.pro</p>
-      <p>2026-04-01
-</p>
+      <p>2026-04-16</p>
     </div>
   </div>;
