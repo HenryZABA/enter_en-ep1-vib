@@ -44,9 +44,11 @@ export const Slide28End = () => {
     }, 120);
   }, []);
 
-  // Trigger confetti automatically when slide loads
+  // Only trigger confetti if explicitly requested via window event
   useEffect(() => {
-    triggerFireworks();
+    const handler = () => triggerFireworks();
+    window.addEventListener("slide-confetti", handler);
+    return () => window.removeEventListener("slide-confetti", handler);
   }, [triggerFireworks]);
   return <div className="flex flex-col items-center justify-center h-full text-center animate-fade-in relative overflow-hidden px-4">
       <div className="space-y-6 md:space-y-8 max-w-5xl">

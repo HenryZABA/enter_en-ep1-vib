@@ -122,6 +122,13 @@ export default function SlideContainer() {
     document.title = `${title} | Enter.pro`;
   }, [safeIndex]);
 
+  // Trigger confetti on last slide
+  useEffect(() => {
+    if (safeIndex === totalSlides - 1 && totalSlides > 1) {
+      window.dispatchEvent(new Event("slide-confetti"));
+    }
+  }, [safeIndex, totalSlides]);
+
   // Check if page indicator should be shown (not on first or last slide)
   const showPageIndicator = safeIndex > 0 && safeIndex < totalSlides - 1;
 

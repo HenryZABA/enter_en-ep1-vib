@@ -116,6 +116,13 @@ export default function GroupPlayer() {
     document.title = `${title} | ${group?.name ?? ""}`;
   }, [masterIndex, group?.name]);
 
+  // Trigger confetti on last slide
+  useEffect(() => {
+    if (safeIndex === totalSlides - 1 && totalSlides > 1) {
+      window.dispatchEvent(new Event("slide-confetti"));
+    }
+  }, [safeIndex, totalSlides]);
+
   // Early return AFTER all hooks
   if (!group || group.slideIndices.length === 0) {
     return (
