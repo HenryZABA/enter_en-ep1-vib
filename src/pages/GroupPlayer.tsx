@@ -15,7 +15,7 @@ import {
   SlidePageIndicator,
 } from "@/components/slides";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, LogOut } from "lucide-react";
 
 export default function GroupPlayer() {
   const { groupId, slideIndex } = useParams();
@@ -180,6 +180,7 @@ export default function GroupPlayer() {
         slideTitles={groupTitles}
         sectionNames={groupSections}
         onGoToSlide={goToSlide}
+        onBack={() => navigate(`/group/${groupId}`)}
       />
     </div>
   );

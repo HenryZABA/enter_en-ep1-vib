@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -19,6 +19,7 @@ export interface SlideNavigationProps {
   slideTitles: string[];
   sectionNames: string[];
   onGoToSlide: (index: number) => void;
+  onBack?: () => void;
 }
 
 export const SlideNavigation = ({
@@ -28,7 +29,8 @@ export const SlideNavigation = ({
   onNext,
   slideTitles,
   sectionNames,
-  onGoToSlide
+  onGoToSlide,
+  onBack
 }: SlideNavigationProps) => {
   const [open, setOpen] = useState(false);
   const currentItemRef = useRef<HTMLButtonElement>(null);
@@ -69,6 +71,20 @@ export const SlideNavigation = ({
   return (
     <>
       <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex items-center space-x-2 md:space-x-4 z-50">
+        {onBack && (
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={(e) => {
+              e.stopPropagation();
+              onBack();
+            }}
+            className="rounded-full h-8 w-8 md:h-10 md:w-10"
+            title="Back to editor"
+          >
+            <LogOut className="h-4 w-4 rotate-180" />
+          </Button>
+        )}
         <Button
           variant="outline"
           size="icon"
