@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGroups } from "@/hooks/useGroups";
-import { slideTitles } from "@/pages/slides/slideConfig";
+import { slides, slideTitles, sectionNames } from "@/pages/slides/slideConfig";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Plus, Play, Pencil, Trash2, Layers } from "lucide-react";
+import { Plus, Play, Pencil, Trash2, Layers, Library, Eye } from "lucide-react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ export default function Dashboard() {
   const [createOpen, setCreateOpen] = useState(false);
   const [newName, setNewName] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
   const handleCreate = () => {
     if (newName.trim()) {
@@ -138,6 +139,52 @@ export default function Dashboard() {
             <p className="text-sm text-muted-foreground">Create New Group</p>
           </Card>
         </div>
+
+        {/* Slide Library */}
+        <div className="px-6 pb-6 mt-4">
+          <div className="flex items-center gap-3 mb-4">
+            <Library className="h-5 w-5 text-primary" />
+            <h2 className="text-xl font-semibold tracking-tight">Slide Library</h2>
+            <span className="text-sm text-muted-foreground">({slides.length} slides)</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+            {slides.map((SlideComponent, index) => {
+              const section = sectionNames[index];
+              return (
+                <div
+                  key={index}
+                  className="group relative border rounded-lg overflow-hidden bg-secondary/20 hover:border-primary/50 transition-colors cursor-pointer"
+                  onClick={() => setPreviewIndex(index)}
+                >
+                  {/* Miniature slide preview */}
+                  <div className="aspect-video overflow-hidden pointer-events-none relative">
+                    <div
+                      className="w-[1920px] h-[1080px] origin-top-left bg-background"
+                      style={{ transform: "scale(0.1)", transformOrigin: "top left" }}
+                    >
+                      <SlideComponent />
+                    </div>
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <Eye className="h-5 w-5 text-primary" />
+                    </div>
+                  </div>
+                  {/* Info */}
+                  <div className="px-2 py-1.5">
+                    <p className="text-xs font-medium line-clamp-1">
+                      {index + 1}. {slideTitles[index] || "Untitled"}
+                    </p>
+                    {section && (
+                      <p className="text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                        {section}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </ScrollArea>
 
       {/* Create Dialog */}
@@ -187,6 +234,62 @@ export default function Dashboard() {
               Delete
             </Button>
           </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Slide Preview Dialog */}
+      <Dialog
+        open={previewIndex !== null}
+        onOpenChange={(open) => !open && setPreviewIndex(null)}
+      >
+        <DialogContent className="max-w-4xl p-0 overflow-hidden">
+          <DialogHeader className="px-6 pt-6 pb-2">
+            <DialogTitle>
+              Slide {previewIndex !== null ? previewIndex + 1 : ""}: {previewIndex !== null ? slideTitles[previewIndex] : ""}
+            </DialogTitle>
+            <DialogDescription>
+              {previewIndex !== null && sectionNames[previewIndex]
+                ? sectionNames[previewIndex]
+                : "Preview"}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="px-6 pb-6">
+            <div className="aspect-video border rounded-lg overflow-hidden relative bg-background">
+              <div
+                className="w-[1920px] h-[1080px] origin-top-left pointer-events-none"
+                style={{
+                  transform: "scale(0.44)",
+                  transformOrigin: "top left",
+                }}
+              >
+                {previewIndex !== null && (() => {
+                  const SlideComp = slides[previewIndex];
+                  return <SlideComp />;
+                })()}
+              </div>
+            </div>
+            <div className="flex items-center justify-between mt-4">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={previewIndex === 0}
+                onClick={() => setPreviewIndex((prev) => prev !== null ? prev - 1 : null)}
+              >
+                Previous
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                {previewIndex !== null ? previewIndex + 1 : 0} / {slides.length}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={previewIndex === slides.length - 1}
+                onClick={() => setPreviewIndex((prev) => prev !== null ? prev + 1 : null)}
+              >
+                Next
+              </Button>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
