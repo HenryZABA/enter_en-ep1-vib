@@ -332,7 +332,7 @@ export default function GroupEditor() {
               Click slides to add or remove them from this group.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="flex-1 min-h-0 -mx-6 px-6">
+          <div className="flex-1 min-h-0 overflow-y-auto -mx-6 px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 py-2">
               {slides.map((SlideComp, masterIdx) => {
                 const isInGroup = groupSlideSet.has(masterIdx);
@@ -348,7 +348,6 @@ export default function GroupEditor() {
                     )}
                   >
                     <SlideThumbnail Component={SlideComp} />
-                    {/* Overlay info */}
                     <div className={cn(
                       "absolute bottom-0 left-0 right-0 px-1 py-0.5 text-[9px] line-clamp-1",
                       isInGroup ? "bg-primary/80 text-primary-foreground" : "bg-background/80 text-muted-foreground"
@@ -364,7 +363,7 @@ export default function GroupEditor() {
                 );
               })}
             </div>
-          </ScrollArea>
+          </div>
         </DialogContent>
       </Dialog>
 
@@ -377,7 +376,7 @@ export default function GroupEditor() {
               Select slides to insert after position {insertAfterPosition + 1}. You can select multiple.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="flex-1 min-h-0 -mx-6 px-6">
+          <div className="flex-1 min-h-0 overflow-y-auto -mx-6 px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 py-2">
               {slides.map((SlideComp, masterIdx) => {
                 const isSelected = insertSelected.includes(masterIdx);
@@ -408,7 +407,7 @@ export default function GroupEditor() {
                 );
               })}
             </div>
-          </ScrollArea>
+          </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setInsertDialogOpen(false)}>
               Cancel
