@@ -3,7 +3,7 @@ export const SlideVC01Cover = () => (
     <div className="space-y-2 md:space-y-4 mt-8 md:mt-20">
       <p className="text-lg md:text-2xl font-medium text-primary tracking-wide">Vibe Coding</p>
       <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-none">
-        普通用户如何VIBE
+        普通用户的VIBE
       </h1>
       <p className="text-xl md:text-3xl lg:text-5xl font-medium text-muted-foreground tracking-tight">
         从抽象到具体，从可能性到确定性
