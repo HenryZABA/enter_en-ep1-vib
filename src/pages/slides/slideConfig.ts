@@ -182,7 +182,7 @@ export const slideTitles: string[] = [
 
 // VC series slide titles (indices 26-40)
 const vcSlideTitles = [
-  "用户画像分析",
+  "普通用户如何VIBE",
   "Part 1 个人感悟",
   "从抽象到具体",
   "核心洞察",

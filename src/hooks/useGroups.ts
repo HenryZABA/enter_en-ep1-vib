@@ -16,7 +16,7 @@ function getDefaultGroups(): SlideGroup[] {
   const originalIndices = Array.from({ length: 26 }, (_, i) => i);
   const vcIndices = Array.from({ length: 15 }, (_, i) => i + 26);
   return [
-    { id: generateId(), name: "分享会", slideIndices: [...originalIndices] },
+    { id: generateId(), name: "分享会", slideIndices: [...vcIndices] },
     { id: generateId(), name: "答辩", slideIndices: [...originalIndices] },
     { id: generateId(), name: "4.16 Workshop", slideIndices: [...originalIndices] },
     { id: generateId(), name: "用户画像分析", slideIndices: [...vcIndices] },
