@@ -42,6 +42,15 @@ import { SlideVC13Trends } from "./SlideVC13Trends";
 import { SlideVC14Projects } from "./SlideVC14Projects";
 import { SlideVC15End } from "./SlideVC15End";
 
+// DB Series imports - 转正答辩
+import { SlideDB01Cover } from "./SlideDB01Cover";
+import { SlideDB02KOLPart } from "./SlideDB02KOLPart";
+import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
+import { SlideDB04Timeline } from "./SlideDB04Timeline";
+import { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
+import { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
+import { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
+
 // All slides in order (original + VC series)
 export const slides = [
   Slide01Cover,
@@ -86,6 +95,14 @@ export const slides = [
   SlideVC13Trends,
   SlideVC14Projects,
   SlideVC15End,
+  // DB Series - 转正答辩 (index 41-47)
+  SlideDB01Cover,
+  SlideDB02KOLPart,
+  SlideDB03KOLOverview,
+  SlideDB04Timeline,
+  SlideDB05PlatformConversion,
+  SlideDB06StarKOLs,
+  SlideDB07SystemBuilding,
 ];
 
 // Section names for each slide (empty string means no indicator)
@@ -137,6 +154,18 @@ const vcSectionNames = [
   "", // VC15: End
 ];
 sectionNames.push(...vcSectionNames);
+
+// DB series section names (indices 41-47)
+const dbSectionNames = [
+  "", // DB01: Cover
+  "Part 1 KOL 合作", // DB02
+  "Part 1 KOL 合作", // DB03
+  "Part 1 KOL 合作", // DB04
+  "Part 1 KOL 合作", // DB05
+  "Part 1 KOL 合作", // DB06
+  "Part 1 KOL 合作", // DB07
+];
+sectionNames.push(...dbSectionNames);
 
 // Slides that have internal navigation (step-based)
 export const interactiveSlideIndices = [25]; // Slide28End (now index 25)
@@ -199,3 +228,15 @@ const vcSlideTitles = [
   "谢谢",
 ];
 slideTitles.push(...vcSlideTitles);
+
+// DB series slide titles (indices 41-47)
+const dbSlideTitles = [
+  "转正答辩",
+  "Part 1 海外 KOL 合作",
+  "KOL 项目总览",
+  "发布时间线 & 平台分布",
+  "平台转化效率对比",
+  "明星 KOL 分析",
+  "KOL 管理体系建设",
+];
+slideTitles.push(...dbSlideTitles);

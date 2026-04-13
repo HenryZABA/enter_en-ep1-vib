@@ -42,6 +42,15 @@ export { SlideVC13Trends } from "./SlideVC13Trends";
 export { SlideVC14Projects } from "./SlideVC14Projects";
 export { SlideVC15End } from "./SlideVC15End";
 
+// DB Series - 转正答辩
+export { SlideDB01Cover } from "./SlideDB01Cover";
+export { SlideDB02KOLPart } from "./SlideDB02KOLPart";
+export { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
+export { SlideDB04Timeline } from "./SlideDB04Timeline";
+export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
+export { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
+export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
+
 export {
   slides,
   sectionNames,
