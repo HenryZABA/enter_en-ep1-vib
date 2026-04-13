@@ -50,6 +50,17 @@ export { SlideDB04Timeline } from "./SlideDB04Timeline";
 export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 export { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
 export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
+export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
+export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
+export { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
+export { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
+export { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
+export { SlideDB13Activities } from "./SlideDB13Activities";
+export { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
+export { SlideDB15AITools } from "./SlideDB15AITools";
+export { SlideDB16FuturePart } from "./SlideDB16FuturePart";
+export { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
+export { SlideDB18End } from "./SlideDB18End";
 
 export {
   slides,

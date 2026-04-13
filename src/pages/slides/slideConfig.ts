@@ -50,6 +50,17 @@ import { SlideDB04Timeline } from "./SlideDB04Timeline";
 import { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 import { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
 import { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
+import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
+import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
+import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
+import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
+import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
+import { SlideDB13Activities } from "./SlideDB13Activities";
+import { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
+import { SlideDB15AITools } from "./SlideDB15AITools";
+import { SlideDB16FuturePart } from "./SlideDB16FuturePart";
+import { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
+import { SlideDB18End } from "./SlideDB18End";
 
 // All slides in order (original + VC series)
 export const slides = [
@@ -95,14 +106,25 @@ export const slides = [
   SlideVC13Trends,
   SlideVC14Projects,
   SlideVC15End,
-  // DB Series - 转正答辩 (index 41-47)
+  // DB Series - 转正答辩 (index 41-58)
   SlideDB01Cover,
   SlideDB02KOLPart,
   SlideDB03KOLOverview,
+  SlideDB08WorkflowOptimization,
   SlideDB04Timeline,
   SlideDB05PlatformConversion,
   SlideDB06StarKOLs,
   SlideDB07SystemBuilding,
+  SlideDB09PGCPart,
+  SlideDB10PGCPipeline,
+  SlideDB11PGCAIApp,
+  SlideDB12ActivityPart,
+  SlideDB13Activities,
+  SlideDB14AIToolsPart,
+  SlideDB15AITools,
+  SlideDB16FuturePart,
+  SlideDB17FuturePlans,
+  SlideDB18End,
 ];
 
 // Section names for each slide (empty string means no indicator)
@@ -155,15 +177,26 @@ const vcSectionNames = [
 ];
 sectionNames.push(...vcSectionNames);
 
-// DB series section names (indices 41-47)
+// DB series section names (indices 41-58)
 const dbSectionNames = [
   "", // DB01: Cover
   "Part 1 KOL 合作", // DB02
   "Part 1 KOL 合作", // DB03
+  "Part 1 KOL 合作", // DB08 Workflow
   "Part 1 KOL 合作", // DB04
   "Part 1 KOL 合作", // DB05
   "Part 1 KOL 合作", // DB06
   "Part 1 KOL 合作", // DB07
+  "Part 2 PGC 制作", // DB09
+  "Part 2 PGC 制作", // DB10
+  "Part 2 PGC 制作", // DB11
+  "Part 3 运营活动", // DB12
+  "Part 3 运营活动", // DB13
+  "Part 4 AI 工具", // DB14
+  "Part 4 AI 工具", // DB15
+  "Part 5 未来规划", // DB16
+  "Part 5 未来规划", // DB17
+  "", // DB18: End
 ];
 sectionNames.push(...dbSectionNames);
 
@@ -229,14 +262,25 @@ const vcSlideTitles = [
 ];
 slideTitles.push(...vcSlideTitles);
 
-// DB series slide titles (indices 41-47)
+// DB series slide titles (indices 41-58)
 const dbSlideTitles = [
   "转正答辩",
   "Part 1 海外 KOL 合作",
   "KOL 项目总览",
+  "工作流迭代与优化",
   "发布时间线 & 平台分布",
   "平台转化效率对比",
   "明星 KOL 分析",
   "KOL 管理体系建设",
+  "Part 2 PGC 内容制作",
+  "PGC 自动化生产流程",
+  "AI App 功能展示与孵化",
+  "Part 3 运营活动",
+  "活动总览",
+  "Part 4 AI 工具使用",
+  "AI 工具全景",
+  "Part 5 未来发展规划",
+  "未来规划",
+  "谢谢",
 ];
 slideTitles.push(...dbSlideTitles);

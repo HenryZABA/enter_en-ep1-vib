@@ -5,22 +5,22 @@ const systems = [
   {
     icon: Database,
     title: "KOL 管理系统",
-    desc: "基于 Supabase 构建，全阶段进度追踪，支持实时 API 查询",
+    desc: "Vibe Coding 自研：可视化追踪数据 & 状态；内部/Agency 文案审核平台；内置 Agent 导入知识库，越用越了解需求",
   },
   {
     icon: Link,
     title: "数据追踪链路",
-    desc: "UTM + Bitly 专属链接，完整归因追踪，点击→注册→付费漏斗",
+    desc: "UTM + Bitly 专属链接，完整归因追踪，点击→注册→付费漏斗，数据每日自动同步",
   },
   {
     icon: BarChart3,
     title: "自动化日报系统",
-    desc: "每日自动拉取视频指标和转化数据，生成结构化报告",
+    desc: "每日自动拉取视频指标和转化数据，生成结构化报告，大幅降低手动统计成本",
   },
   {
     icon: FileCheck,
     title: "脚本审核标准化",
-    desc: "KOL 脚本审核手册 v3：4项核心检查 + 3大额外维度",
+    desc: "KOL 脚本审核手册 v3：4项核心检查 + 3大额外维度，将审核质量标准化",
   },
 ];
 
