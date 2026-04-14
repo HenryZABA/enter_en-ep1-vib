@@ -1,11 +1,9 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 export function SlideDB11bPGCRevenue() {
   return (
     <SlideLayout>
       <div className="h-full flex flex-col px-20 py-16">
-        <SlideHeader section="PGC 内容制作" />
 
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full max-w-[1400px] flex gap-12 items-stretch">

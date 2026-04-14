@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const steps = [
   {
@@ -28,7 +27,6 @@ export function SlideDB07cKOLLearning() {
   return (
     <SlideLayout>
       <div className="h-full flex flex-col px-20 py-16">
-        <SlideHeader section="KOL 达人运营" />
 
         <div className="flex-1 flex flex-col justify-center gap-12">
           {/* Title area */}
