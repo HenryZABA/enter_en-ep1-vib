@@ -1,51 +1,128 @@
 import { SlideLayout } from "@/components/slides";
-import { User, Megaphone, Palette, Bot, TrendingUp, Globe } from "lucide-react";
+import { Megaphone, Palette, Bot, TrendingUp } from "lucide-react";
 
 const skills = [
-  { icon: Megaphone, label: "KOL 达人运营", desc: "Agency 对接 · 达人筛选 · 脚本审核 · 数据追踪" },
-  { icon: Palette, label: "PGC 内容制作", desc: "落地页 · 模板分析 · 自动化批量生产" },
-  { icon: TrendingUp, label: "运营活动策划", desc: "Hackathon · Solo Founder · 社群运营" },
-  { icon: Bot, label: "AI 工具开发", desc: "Agent · 工作流自动化 · 知识库 · Skill" },
-  { icon: Globe, label: "海外市场拓展", desc: "多平台内容分发 · 社群维护 · 线下活动" },
+  {
+    icon: Megaphone,
+    label: "KOL 达人运营",
+    tags: ["Agency 对接", "达人筛选", "脚本审核", "数据追踪"],
+    color: "from-rose-500 to-pink-600",
+    bg: "bg-rose-500/10",
+    border: "border-rose-500/30",
+  },
+  {
+    icon: Palette,
+    label: "PGC 内容制作",
+    tags: ["落地页", "模板分析", "自动化批量生产"],
+    color: "from-violet-500 to-purple-600",
+    bg: "bg-violet-500/10",
+    border: "border-violet-500/30",
+  },
+  {
+    icon: TrendingUp,
+    label: "运营活动策划",
+    tags: ["Hackathon", "Solo Founder", "社群运营"],
+    color: "from-amber-500 to-orange-600",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/30",
+  },
+  {
+    icon: Bot,
+    label: "AI 工具开发",
+    tags: ["Agent", "工作流自动化", "知识库", "Skill"],
+    color: "from-cyan-500 to-blue-600",
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-500/30",
+  },
 ];
 
 export const SlideDB01bSelfIntro = () => (
   <SlideLayout title="自我介绍">
-    <div className="flex flex-col h-full justify-center px-2 md:px-8 space-y-8 md:space-y-10">
-      {/* Header */}
-      <div className="flex items-center gap-4 md:gap-6">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-          <User className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+    <div className="flex flex-col h-full px-[60px] py-[20px]">
+      {/* Top section */}
+      <div className="flex items-end gap-[24px] mb-[40px]">
+        {/* Avatar area */}
+        <div className="relative">
+          <div className="w-[100px] h-[100px] rounded-[20px] bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20 flex items-center justify-center">
+            <span className="text-[42px] font-black bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent">
+              G
+            </span>
+          </div>
+          <div className="absolute -bottom-[6px] -right-[6px] w-[24px] h-[24px] rounded-full bg-green-500 border-[3px] border-background" />
         </div>
-        <div>
-          <h2 className="text-2xl md:text-4xl font-bold">增长运营</h2>
-          <p className="text-base md:text-xl text-muted-foreground mt-1">
-            横向涉猎广泛，覆盖从内容到技术的全链路增长
+        <div className="flex-1">
+          <h2 className="text-[38px] font-black leading-tight tracking-tight">
+            增长运营
+          </h2>
+          <p className="text-[17px] text-muted-foreground mt-[4px]">
+            横向覆盖从内容到技术的全链路增长
           </p>
+        </div>
+        {/* Stats */}
+        <div className="flex gap-[20px]">
+          {[
+            { n: "27", l: "KOL 合作" },
+            { n: "300+", l: "PGC 产出" },
+            { n: "15+", l: "AI Skills" },
+          ].map((s) => (
+            <div
+              key={s.l}
+              className="text-center px-[16px] py-[10px] rounded-[12px] bg-card/50 border border-border/40"
+            >
+              <div className="text-[26px] font-black text-primary leading-none">
+                {s.n}
+              </div>
+              <div className="text-[12px] text-muted-foreground mt-[4px]">
+                {s.l}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Skills Grid */}
-      <div className="space-y-3 md:space-y-4">
-        {skills.map((skill) => (
+      {/* Skill cards - 2x2 grid */}
+      <div className="grid grid-cols-2 gap-[16px] flex-1">
+        {skills.map((skill, i) => (
           <div
             key={skill.label}
-            className="flex items-center gap-4 md:gap-5 p-3 md:p-4 rounded-xl border border-border/50 bg-card/30"
+            className={`relative overflow-hidden rounded-[16px] border ${skill.border} ${skill.bg} p-[24px] flex flex-col justify-between group`}
           >
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-              <skill.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+            {/* Background number */}
+            <span className="absolute top-[10px] right-[16px] text-[72px] font-black leading-none text-foreground/[0.04] select-none">
+              0{i + 1}
+            </span>
+
+            <div>
+              <div className="flex items-center gap-[12px] mb-[12px]">
+                <div
+                  className={`w-[40px] h-[40px] rounded-[10px] bg-gradient-to-br ${skill.color} flex items-center justify-center`}
+                >
+                  <skill.icon className="w-[20px] h-[20px] text-white" />
+                </div>
+                <h3 className="text-[20px] font-bold">{skill.label}</h3>
+              </div>
             </div>
-            <div className="flex-1 min-w-0">
-              <span className="text-sm md:text-lg font-bold block">{skill.label}</span>
-              <span className="text-xs md:text-sm text-muted-foreground">{skill.desc}</span>
+
+            <div className="flex flex-wrap gap-[8px]">
+              {skill.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-[12px] py-[5px] rounded-full text-[13px] font-medium bg-background/60 border border-border/40 text-foreground/80"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-xs md:text-base text-muted-foreground/80 italic">
-        "在 AI 赋能下，一人覆盖多岗位的全能型增长正在成为可能。"
-      </p>
+      {/* Bottom quote */}
+      <div className="mt-[16px] text-center">
+        <p className="text-[14px] text-muted-foreground/70 italic">
+          "AI 赋能下，一人覆盖多岗位的全能型增长正在成为可能。"
+        </p>
+      </div>
     </div>
   </SlideLayout>
 );
