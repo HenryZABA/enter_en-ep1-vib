@@ -20,7 +20,7 @@ export function SlideDB04Timeline() {
     <SlideLayout>
       <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
-        <h2 className="text-[48px] font-bold text-foreground">二、平台分布 & Agency 对比</h2>
+        <h2 className="text-[48px] font-bold text-foreground">平台分布 & Agency 对比</h2>
 
         {/* Platform visual comparison */}
         <div className="flex gap-[24px]">

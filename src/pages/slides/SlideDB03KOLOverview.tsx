@@ -28,7 +28,7 @@ export function SlideDB03KOLOverview() {
     <SlideLayout>
       <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[40px]">
-        <h2 className="text-[48px] font-bold text-foreground">一、整体投放规模</h2>
+        <h2 className="text-[48px] font-bold text-foreground">整体投放规模</h2>
         <p className="text-[20px] text-muted-foreground -mt-[30px]">数据截至 2026-04-14 | 已发布 KOL：27 个</p>
 
         {/* 5 stat cards */}

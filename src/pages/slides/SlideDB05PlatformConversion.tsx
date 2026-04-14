@@ -17,7 +17,7 @@ export function SlideDB05PlatformConversion() {
       <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[32px]">
         <div>
-          <h2 className="text-[48px] font-bold text-foreground">四、优质 KOL 表现</h2>
+          <h2 className="text-[48px] font-bold text-foreground">优质 KOL 表现</h2>
           <p className="text-[20px] text-muted-foreground mt-[8px]">通过后端数据库实测，以「项目发布率」衡量用户真实参与</p>
         </div>
 
