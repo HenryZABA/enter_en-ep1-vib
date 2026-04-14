@@ -38,11 +38,7 @@ const columns = [
   {
     icon: User,
     title: "个人职业发展",
-    items: [
-      { label: "不设限", desc: "不预设具体传统岗位方向" },
-      { label: "全能型进化", desc: "AI 赋能下多种能力融为一岗" },
-      { label: "新岗位趋势", desc: "大厂对岗位要求越来越宽泛，AI 让这成为可能" },
-    ],
+    items: [],
     color: "bg-primary/10 border-primary/30",
     iconColor: "text-primary",
   },
