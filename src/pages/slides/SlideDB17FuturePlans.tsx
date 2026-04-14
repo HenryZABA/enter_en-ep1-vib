@@ -1,5 +1,5 @@
 import { SlideLayout } from "@/components/slides";
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 const columns = [
   {
@@ -42,6 +42,108 @@ const columns = [
 
 export const SlideDB17FuturePlans = () => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+  const particlesRef = useRef<
+    { x: number; y: number; vx: number; vy: number; r: number; alpha: number; decay: number }[]
+  >([]);
+  const isCard4Hovered = hovered === 3;
+
+  const initParticles = useCallback((w: number, h: number) => {
+    const pts = [];
+    for (let i = 0; i < 80; i++) {
+      pts.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4 - 0.15,
+        r: Math.random() * 2 + 0.5,
+        alpha: Math.random() * 0.6 + 0.1,
+        decay: Math.random() * 0.003 + 0.001,
+      });
+    }
+    particlesRef.current = pts;
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (!rect) return;
+      canvas.width = rect.width * 2;
+      canvas.height = rect.height * 2;
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+      ctx.scale(2, 2);
+      if (particlesRef.current.length === 0) initParticles(rect.width, rect.height);
+    };
+    resize();
+
+    const draw = () => {
+      const w = canvas.width / 2;
+      const h = canvas.height / 2;
+      ctx.clearRect(0, 0, w, h);
+
+      if (!isCard4Hovered) {
+        // Fade out slowly
+        particlesRef.current.forEach((p) => {
+          p.alpha = Math.max(0, p.alpha - 0.02);
+        });
+      }
+
+      // Draw connections
+      const pts = particlesRef.current;
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 60) {
+            const lineAlpha = ((1 - dist / 60) * Math.min(pts[i].alpha, pts[j].alpha)) * 0.5;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(226, 77, 143, ${lineAlpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw & update particles
+      pts.forEach((p) => {
+        if (isCard4Hovered && p.alpha < 0.6) {
+          p.alpha = Math.min(0.6, p.alpha + 0.01);
+        }
+
+        ctx.beginPath();
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2);
+        grad.addColorStop(0, `rgba(226, 77, 143, ${p.alpha})`);
+        grad.addColorStop(0.5, `rgba(168, 85, 247, ${p.alpha * 0.5})`);
+        grad.addColorStop(1, `rgba(168, 85, 247, 0)`);
+        ctx.fillStyle = grad;
+        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+      });
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => cancelAnimationFrame(animRef.current);
+  }, [isCard4Hovered, initParticles]);
 
   return (
     <SlideLayout title="">
@@ -158,21 +260,21 @@ export const SlideDB17FuturePlans = () => {
                         ))}
                       </div>
                     ) : (
-                      <div className="flex-1 flex items-center justify-center">
-                        <div
-                          className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-dashed flex items-center justify-center transition-all duration-500"
-                          style={{
-                            borderColor: isActive
-                              ? `${col.accent}60`
-                              : `${col.accent}20`,
-                          }}
-                        >
-                          <span
-                            className="text-2xl md:text-3xl font-extralight"
-                            style={{ color: `${col.accent}80` }}
+                      <div className="flex-1 relative overflow-hidden">
+                        <canvas
+                          ref={canvasRef}
+                          className="absolute inset-0 w-full h-full"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <p
+                            className="text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-700"
+                            style={{
+                              color: isActive ? `${col.accent}90` : `${col.accent}30`,
+                              letterSpacing: isActive ? "0.35em" : "0.2em",
+                            }}
                           >
-                            ?
-                          </span>
+                            INFINITE
+                          </p>
                         </div>
                       </div>
                     )}
