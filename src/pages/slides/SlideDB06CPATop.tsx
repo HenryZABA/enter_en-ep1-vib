@@ -18,7 +18,7 @@ export function SlideDB06CPATop() {
       <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
         <div>
-          <h2 className="text-[48px] font-bold text-foreground">五、CPA 效率 Top KOL</h2>
+          <h2 className="text-[48px] font-bold text-foreground">CPA 效率 Top KOL</h2>
           <p className="text-[20px] text-muted-foreground mt-[8px]">按每注册成本从低到高排序，越低越高效</p>
         </div>
 
