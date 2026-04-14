@@ -20,7 +20,7 @@ import { ArrowLeft, Play, Plus, X, Check, GripVertical } from "lucide-react";
 export default function GroupEditor() {
   const { groupId } = useParams();
   const navigate = useNavigate();
-  const { getGroup, renameGroup, addSlide, removeSlide, reorderSlides, insertSlides } = useGroups();
+  const { getGroup, renameGroup, addSlide, removeSlide, reorderSlides, insertSlides, loading } = useGroups();
   const group = getGroup(groupId || "");
 
   const [selectedPosition, setSelectedPosition] = useState(0);
@@ -94,6 +94,14 @@ export default function GroupEditor() {
     setDropTarget(null);
     dragCounter.current = 0;
   }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-background text-foreground">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
 
   if (!group) {
     return (

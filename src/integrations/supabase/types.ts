@@ -3109,7 +3109,33 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      slide_groups: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slide_indices: Json
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slide_indices?: Json
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slide_indices?: Json
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

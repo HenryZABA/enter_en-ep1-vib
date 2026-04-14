@@ -19,18 +19,18 @@ import { SlideThumbnail } from "@/components/slides/SlideThumbnail";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { groups, createGroup, deleteGroup } = useGroups();
+  const { groups, loading, createGroup, deleteGroup } = useGroups();
   const [createOpen, setCreateOpen] = useState(false);
   const [newName, setNewName] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     if (newName.trim()) {
-      const group = createGroup(newName.trim());
+      const group = await createGroup(newName.trim());
       setNewName("");
       setCreateOpen(false);
-      navigate(`/group/${group.id}`);
+      if (group) navigate(`/group/${group.id}`);
     }
   };
 
@@ -57,6 +57,11 @@ export default function Dashboard() {
 
       {/* Group Cards */}
       <ScrollArea className="flex-1">
+        {loading ? (
+          <div className="flex items-center justify-center h-40">
+            <p className="text-sm text-muted-foreground">Loading...</p>
+          </div>
+        ) : (
         <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {groups.map((group) => {
             const firstTitle =
@@ -140,6 +145,7 @@ export default function Dashboard() {
             <p className="text-sm text-muted-foreground">Create New Group</p>
           </Card>
         </div>
+        )}
 
         {/* Slide Library */}
         <div className="px-6 pb-6 mt-4">

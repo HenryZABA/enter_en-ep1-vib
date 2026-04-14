@@ -20,7 +20,7 @@ import { ArrowLeft, LogOut } from "lucide-react";
 export default function GroupPlayer() {
   const { groupId, slideIndex } = useParams();
   const navigate = useNavigate();
-  const { getGroup } = useGroups();
+  const { getGroup, loading } = useGroups();
   const group = getGroup(groupId || "");
 
   const currentIndex = parseInt(slideIndex || "1") - 1;
@@ -124,6 +124,14 @@ export default function GroupPlayer() {
   }, [safeIndex, totalSlides]);
 
   // Early return AFTER all hooks
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-background text-foreground">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
+
   if (!group || group.slideIndices.length === 0) {
     return (
       <div className="h-screen flex items-center justify-center bg-background text-foreground">

@@ -1,0 +1,32 @@
+
+-- Create slide_groups table
+CREATE TABLE slide_groups (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  slide_indices jsonb NOT NULL DEFAULT '[]'::jsonb,
+  sort_order integer NOT NULL DEFAULT 0,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Enable RLS (required) but allow public access
+ALTER TABLE slide_groups ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow public read" ON slide_groups FOR SELECT USING (true);
+CREATE POLICY "Allow public insert" ON slide_groups FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow public update" ON slide_groups FOR UPDATE USING (true) WITH CHECK (true);
+CREATE POLICY "Allow public delete" ON slide_groups FOR DELETE USING (true);
+
+-- Auto-update updated_at
+CREATE OR REPLACE FUNCTION update_slide_groups_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_slide_groups_updated_at
+  BEFORE UPDATE ON slide_groups
+  FOR EACH ROW
+  EXECUTE FUNCTION update_slide_groups_updated_at();

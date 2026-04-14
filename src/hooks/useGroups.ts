@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 export interface SlideGroup {
   id: string;
@@ -6,114 +7,150 @@ export interface SlideGroup {
   slideIndices: number[];
 }
 
-const STORAGE_KEY = "slide-groups";
-const VERSION_KEY = "slide-groups-version";
-const CURRENT_VERSION = 18; // bump this when defaults change
-
-function generateId(): string {
-  return crypto.randomUUID();
-}
-
-function getDefaultGroups(): SlideGroup[] {
-  const originalIndices = Array.from({ length: 26 }, (_, i) => i);
-  const vcIndices = Array.from({ length: 15 }, (_, i) => i + 26);
-  const dbIndices = [41,42,43,50,46,45,51,49,52,29,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68];
-  return [
-    { id: generateId(), name: "分享会", slideIndices: [...vcIndices] },
-    { id: generateId(), name: "答辩", slideIndices: [...dbIndices] },
-    { id: generateId(), name: "4.16 Workshop", slideIndices: [...originalIndices] },
-  ];
-}
-
-function loadGroups(): SlideGroup[] {
-  try {
-    const savedVersion = Number(localStorage.getItem(VERSION_KEY) || "0");
-    if (savedVersion >= CURRENT_VERSION) {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as SlideGroup[];
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-    }
-  } catch {
-    // ignore
-  }
-  const defaults = getDefaultGroups();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
-  localStorage.setItem(VERSION_KEY, String(CURRENT_VERSION));
-  return defaults;
-}
-
-function saveGroups(groups: SlideGroup[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
+function toGroup(row: { id: string; name: string; slide_indices: unknown }): SlideGroup {
+  return {
+    id: row.id,
+    name: row.name,
+    slideIndices: Array.isArray(row.slide_indices) ? (row.slide_indices as number[]) : [],
+  };
 }
 
 export function useGroups() {
-  const [groups, setGroups] = useState<SlideGroup[]>(loadGroups);
+  const [groups, setGroups] = useState<SlideGroup[]>([]);
+  const [loading, setLoading] = useState(true);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Fetch from DB on mount
   useEffect(() => {
-    saveGroups(groups);
-  }, [groups]);
-
-  const createGroup = useCallback((name: string) => {
-    const newGroup: SlideGroup = { id: generateId(), name, slideIndices: [] };
-    setGroups((prev) => [...prev, newGroup]);
-    return newGroup;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from("slide_groups")
+        .select("*")
+        .order("sort_order", { ascending: true });
+      if (!cancelled) {
+        if (!error && data && data.length > 0) {
+          setGroups(data.map(toGroup));
+        }
+        setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
   }, []);
 
-  const deleteGroup = useCallback((groupId: string) => {
-    setGroups((prev) => prev.filter((g) => g.id !== groupId));
+  // Debounced persist — batch-update all groups
+  const persistAll = useCallback((updated: SlideGroup[]) => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(async () => {
+      for (let i = 0; i < updated.length; i++) {
+        const g = updated[i];
+        await supabase
+          .from("slide_groups")
+          .update({
+            slide_indices: g.slideIndices as unknown as undefined,
+            sort_order: i,
+            name: g.name,
+          })
+          .eq("id", g.id);
+      }
+    }, 300);
   }, []);
 
-  const renameGroup = useCallback((groupId: string, name: string) => {
-    setGroups((prev) =>
-      prev.map((g) => (g.id === groupId ? { ...g, name } : g))
-    );
-  }, []);
-
-  const addSlide = useCallback((groupId: string, slideIndex: number) => {
-    setGroups((prev) =>
-      prev.map((g) =>
-        g.id === groupId && !g.slideIndices.includes(slideIndex)
-          ? { ...g, slideIndices: [...g.slideIndices, slideIndex] }
-          : g
-      )
-    );
-  }, []);
-
-  const removeSlide = useCallback((groupId: string, position: number) => {
-    setGroups((prev) =>
-      prev.map((g) =>
-        g.id === groupId
-          ? { ...g, slideIndices: g.slideIndices.filter((_, i) => i !== position) }
-          : g
-      )
-    );
-  }, []);
-
-  const reorderSlides = useCallback(
-    (groupId: string, newIndices: number[]) => {
-      setGroups((prev) =>
-        prev.map((g) =>
-          g.id === groupId ? { ...g, slideIndices: newIndices } : g
-        )
-      );
+  const createGroup = useCallback(
+    async (name: string): Promise<SlideGroup | null> => {
+      const { data, error } = await supabase
+        .from("slide_groups")
+        .insert({ name, slide_indices: [] as unknown as undefined, sort_order: 999 })
+        .select()
+        .single();
+      if (error || !data) return null;
+      const newGroup = toGroup(data);
+      setGroups((prev) => [...prev, newGroup]);
+      return newGroup;
     },
     []
   );
 
+  const deleteGroup = useCallback(
+    async (groupId: string) => {
+      await supabase.from("slide_groups").delete().eq("id", groupId);
+      setGroups((prev) => {
+        const next = prev.filter((g) => g.id !== groupId);
+        persistAll(next);
+        return next;
+      });
+    },
+    [persistAll]
+  );
+
+  const renameGroup = useCallback(
+    (groupId: string, name: string) => {
+      setGroups((prev) => {
+        const next = prev.map((g) => (g.id === groupId ? { ...g, name } : g));
+        persistAll(next);
+        return next;
+      });
+    },
+    [persistAll]
+  );
+
+  const addSlide = useCallback(
+    (groupId: string, slideIndex: number) => {
+      setGroups((prev) => {
+        const next = prev.map((g) =>
+          g.id === groupId && !g.slideIndices.includes(slideIndex)
+            ? { ...g, slideIndices: [...g.slideIndices, slideIndex] }
+            : g
+        );
+        persistAll(next);
+        return next;
+      });
+    },
+    [persistAll]
+  );
+
+  const removeSlide = useCallback(
+    (groupId: string, position: number) => {
+      setGroups((prev) => {
+        const next = prev.map((g) =>
+          g.id === groupId
+            ? { ...g, slideIndices: g.slideIndices.filter((_, i) => i !== position) }
+            : g
+        );
+        persistAll(next);
+        return next;
+      });
+    },
+    [persistAll]
+  );
+
+  const reorderSlides = useCallback(
+    (groupId: string, newIndices: number[]) => {
+      setGroups((prev) => {
+        const next = prev.map((g) =>
+          g.id === groupId ? { ...g, slideIndices: newIndices } : g
+        );
+        persistAll(next);
+        return next;
+      });
+    },
+    [persistAll]
+  );
+
   const insertSlides = useCallback(
     (groupId: string, afterPosition: number, slideIndices: number[]) => {
-      setGroups((prev) =>
-        prev.map((g) => {
+      setGroups((prev) => {
+        const next = prev.map((g) => {
           if (g.id !== groupId) return g;
           const newArr = [...g.slideIndices];
           newArr.splice(afterPosition + 1, 0, ...slideIndices);
           return { ...g, slideIndices: newArr };
-        })
-      );
+        });
+        persistAll(next);
+        return next;
+      });
     },
-    []
+    [persistAll]
   );
 
   const getGroup = useCallback(
@@ -123,6 +160,7 @@ export function useGroups() {
 
   return {
     groups,
+    loading,
     createGroup,
     deleteGroup,
     renameGroup,
