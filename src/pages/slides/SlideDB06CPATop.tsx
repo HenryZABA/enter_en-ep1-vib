@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const cpaRank = [
   { name: "oMatheusdaIA", platform: "YouTube", spend: 650, regs: 19, cpa: 34.21 },
@@ -15,7 +14,6 @@ const maxCpa = 87.88;
 export function SlideDB06CPATop() {
   return (
     <SlideLayout>
-      <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
         <div>
           <h2 className="text-[48px] font-bold text-foreground">CPA 效率 Top KOL</h2>

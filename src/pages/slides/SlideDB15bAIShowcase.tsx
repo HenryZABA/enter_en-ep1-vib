@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const tools = [
   {
@@ -17,7 +16,6 @@ const tools = [
 export function SlideDB15bAIShowcase() {
   return (
     <SlideLayout>
-      <SlideHeader title="AI 工具实战展示" subtitle="Agent + Skill 构建的自动化工作流" />
       <div className="grid grid-cols-2 gap-[40px] px-[80px]">
         {tools.map((t) => (
           <div key={t.title} className="flex flex-col bg-muted/20 border border-border/30 rounded-xl overflow-hidden">

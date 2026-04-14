@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const topKOLs = [
   { name: "ariacodez", platform: "Instagram", users: 38, createRate: 60.5, publishRate: 34.2, stars: 5 },
@@ -14,7 +13,6 @@ const maxPublishRate = 34.2;
 export function SlideDB05PlatformConversion() {
   return (
     <SlideLayout>
-      <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[32px]">
         <div>
           <h2 className="text-[48px] font-bold text-foreground">优质 KOL 表现</h2>

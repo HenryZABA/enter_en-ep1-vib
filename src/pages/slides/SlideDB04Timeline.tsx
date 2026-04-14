@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const platforms = [
   { name: "YouTube", kols: 16, spend: 33250, views: "1.02M", interactions: 10852, regs: 495, cpa: "$67.17", color: "#ef4444", regPct: 90.2 },
@@ -18,7 +17,6 @@ export function SlideDB04Timeline() {
 
   return (
     <SlideLayout>
-      <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
         <h2 className="text-[48px] font-bold text-foreground">平台分布 & Agency 对比</h2>
 

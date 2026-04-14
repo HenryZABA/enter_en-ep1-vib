@@ -1,5 +1,4 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const dimensions = [
   {
@@ -31,7 +30,6 @@ const adjustments = [
 
 export const SlideDB08WorkflowOptimization = () => (
   <SlideLayout>
-    <SlideHeader section="Part 1 KOL 合作" />
     <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
       <div>
         <h2 className="text-[48px] font-bold text-foreground">工作流迭代与优化</h2>

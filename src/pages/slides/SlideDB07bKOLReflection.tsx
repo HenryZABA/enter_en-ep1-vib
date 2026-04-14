@@ -1,10 +1,8 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
-import { SlideHeader } from "@/components/slides/SlideHeader";
 
 export function SlideDB07bKOLReflection() {
   return (
     <SlideLayout>
-      <SlideHeader section="Part 1 KOL 合作" />
       <div className="flex-1 flex items-center justify-center px-[120px] relative overflow-hidden">
         {/* Subtle radial glow background */}
         <div
