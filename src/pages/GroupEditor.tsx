@@ -23,11 +23,6 @@ export default function GroupEditor() {
   const { getGroup, renameGroup, addSlide, removeSlide, reorderSlides, insertSlides } = useGroups();
   const group = getGroup(groupId || "");
 
-  // Temp: log current slide order
-  if (group) {
-    console.log("CURRENT_ORDER:" + JSON.stringify(group.slideIndices));
-  }
-
   const [selectedPosition, setSelectedPosition] = useState(0);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [insertDialogOpen, setInsertDialogOpen] = useState(false);
