@@ -102,9 +102,12 @@ export const SlideDB11PGCAIApp = () => {
                   src={ch.image}
                   alt={ch.label}
                   crossOrigin="anonymous"
-                  className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500"
+                  className="absolute inset-0 w-full h-full transition-all duration-500"
                   style={{
-                    filter: isHovered ? "brightness(0.85)" : isCollapsed ? "brightness(0.3) blur(2px)" : "brightness(0.5)",
+                    objectFit: isHovered ? "contain" : "cover",
+                    objectPosition: isHovered ? "center top" : "center top",
+                    backgroundColor: isHovered ? "rgba(0,0,0,0.95)" : "transparent",
+                    filter: isHovered ? "brightness(0.9)" : isCollapsed ? "brightness(0.3) blur(2px)" : "brightness(0.5)",
                   }}
                 />
 

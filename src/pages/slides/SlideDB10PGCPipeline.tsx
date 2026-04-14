@@ -11,37 +11,19 @@ const steps = [
 export const SlideDB10PGCPipeline = () => (
   <SlideLayout title="PGC 自动化生产流程">
     <div className="flex flex-col h-full justify-center space-y-8 md:space-y-10 px-2 md:px-8">
-      {/* Early stage */}
+      {/* Evolution */}
       <div className="space-y-3">
         <h3 className="text-lg md:text-2xl font-bold">演进路径</h3>
-        <div className="flex items-center gap-3 md:gap-4">
-          {[
-            { phase: "早期", desc: "Category 分类化建设", active: false },
-            { phase: "中期", desc: "以 Web 为载体，Landing Page 居多", active: false },
-            { phase: "现在", desc: "自动化批量生产", active: true },
-          ].map((p, i) => (
-            <div key={p.phase} className="flex items-center gap-3 flex-1">
-              <div
-                className={`flex-1 p-4 md:p-5 rounded-xl border ${
-                  p.active
-                    ? "bg-primary/10 border-primary/30"
-                    : "bg-card/50 border-border/50"
-                }`}
-              >
-                <span
-                  className={`text-sm md:text-base font-bold ${
-                    p.active ? "text-primary" : "text-foreground"
-                  }`}
-                >
-                  {p.phase}
-                </span>
-                <p className="text-xs md:text-sm text-muted-foreground mt-1">{p.desc}</p>
-              </div>
-              {i < 2 && (
-                <ArrowRight className="w-4 h-4 text-muted-foreground shrink-0" />
-              )}
-            </div>
-          ))}
+        <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex-1 p-4 md:p-5 rounded-xl border border-border/50 bg-card/50">
+            <span className="text-sm md:text-base font-bold text-muted-foreground">非自动化</span>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">手动制作，分类建设，逐个发布</p>
+          </div>
+          <ArrowRight className="w-6 h-6 text-primary shrink-0" />
+          <div className="flex-1 p-4 md:p-5 rounded-xl border border-primary/30 bg-primary/10">
+            <span className="text-sm md:text-base font-bold text-primary">自动化</span>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">模板分析 → AI 重新生成 → 批量产出</p>
+          </div>
         </div>
       </div>
 
