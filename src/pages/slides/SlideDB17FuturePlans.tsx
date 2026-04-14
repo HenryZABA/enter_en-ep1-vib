@@ -15,11 +15,11 @@ const columns = [
   },
   {
     icon: Bot,
-    title: "AI & Agent 落地",
+    title: "AI App 批量化",
     items: [
       { label: "内容自动化", desc: "让 Agent 胜任更多内容生产工作" },
-      { label: "PGC 批量化", desc: "批量做出更多可直接使用的 Agent" },
-      { label: "活动经验沉淀", desc: "成功经验做成 AI 可执行的标准流程" },
+      { label: "PGC 批量化", desc: "批量做出更多可直接使用的 AI App" },
+      { label: "形成 Agent Market", desc: "将运营活动中大量重复工作自动化、AI 化，沉淀为可复用的 Agent 产品" },
     ],
     color: "bg-purple-500/10 border-purple-500/30",
     iconColor: "text-purple-400",
