@@ -59,9 +59,9 @@ export const SlideDB11PGCAIApp = () => {
 
   return (
     <SlideLayout title="PGC 物料再利用">
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full items-center justify-center">
         {/* Header */}
-        <div className="flex items-end justify-between mb-[16px]">
+        <div className="flex items-end justify-between mb-[16px] w-[90%] mx-auto">
           <div>
             <p className="text-[11px] text-muted-foreground/50 tracking-widest uppercase mb-[2px]">
               Content Repurposing
@@ -77,7 +77,7 @@ export const SlideDB11PGCAIApp = () => {
         </div>
 
         {/* Cards */}
-        <div className="flex-1 flex gap-[10px] min-h-0">
+        <div className="flex gap-[10px] mx-auto w-[90%] h-[75%]">
           {channels.map((ch) => {
             const isHovered = hovered === ch.key;
             const hasHover = hovered !== null;
