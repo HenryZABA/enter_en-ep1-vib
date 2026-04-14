@@ -1,5 +1,5 @@
-import SlideLayout from "./SlideLayout";
-import SlideHeader from "./SlideHeader";
+import { SlideLayout } from "@/components/slides/SlideLayout";
+import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const steps = [
   {
