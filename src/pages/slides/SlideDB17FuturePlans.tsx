@@ -1,5 +1,5 @@
 import { SlideLayout } from "@/components/slides";
-import { Cog, Bot, User } from "lucide-react";
+import { Cog, Bot, Repeat, User } from "lucide-react";
 
 const columns = [
   {
@@ -19,10 +19,21 @@ const columns = [
     items: [
       { label: "内容自动化", desc: "让 Agent 胜任更多内容生产工作" },
       { label: "PGC 批量化", desc: "批量做出更多可直接使用的 AI App" },
-      { label: "形成 Agent Market", desc: "将运营活动中大量重复工作自动化、AI 化，沉淀为可复用的 Agent 产品" },
+      { label: "形成 Agent Market", desc: "沉淀为可复用的 Agent 产品" },
     ],
     color: "bg-purple-500/10 border-purple-500/30",
     iconColor: "text-purple-400",
+  },
+  {
+    icon: Repeat,
+    title: "活动经验沉淀",
+    items: [
+      { label: "重复工作自动化", desc: "将运营活动中大量重复性工作用 AI 替代" },
+      { label: "流程标准化", desc: "把成功的活动经验抽象为可复用的标准流程" },
+      { label: "AI 化运营", desc: "从人工驱动转为 AI 驱动，释放人力聚焦策略" },
+    ],
+    color: "bg-emerald-500/10 border-emerald-500/30",
+    iconColor: "text-emerald-400",
   },
   {
     icon: User,
@@ -40,7 +51,7 @@ const columns = [
 export const SlideDB17FuturePlans = () => (
   <SlideLayout title="未来规划">
     <div className="flex flex-col h-full justify-center space-y-6 md:space-y-8 px-2 md:px-8">
-      <div className="grid grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-4 gap-3 md:gap-5">
         {columns.map((col) => {
           const Icon = col.icon;
           return (
