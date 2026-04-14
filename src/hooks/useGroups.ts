@@ -8,7 +8,7 @@ export interface SlideGroup {
 
 const STORAGE_KEY = "slide-groups";
 const VERSION_KEY = "slide-groups-version";
-const CURRENT_VERSION = 8; // bump this when defaults change
+const CURRENT_VERSION = 9; // bump this when defaults change
 
 function generateId(): string {
   return crypto.randomUUID();
