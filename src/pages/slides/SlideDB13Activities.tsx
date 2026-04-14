@@ -13,7 +13,6 @@ const activities = [
       { label: "参与团队", value: "内部全员" },
     ],
     points: [
-      "在 VB 老师帮助下开展队内黑客松",
       "快速将内容转化为物料，实现项目闭环",
       "配合 Activity 页面上线，开启首次正式活动",
     ],
@@ -24,14 +23,13 @@ const activities = [
     title: "Solo Founder 专项赛",
     subtitle: "Community Competition",
     color: "#EC4899",
-    badge: "远超预期",
+    badge: undefined,
     stats: [
       { label: "参赛人数", value: "130+" },
       { label: "有效提交", value: "39" },
     ],
     points: [
-      "在周周老师指导下理清办赛逻辑",
-      "数据表现远超预期，依靠社群黏度一点点做出数据",
+      "数据超过预期",
       "国内社群用户极具参与感和测评能力",
     ],
   },
