@@ -1,67 +1,75 @@
-import { SlideLayout } from "@/components/slides";
+import { SlideLayout } from "@/components/slides/SlideLayout";
+import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const kpis = [
-  { value: "46", label: "KOL 合作总数" },
-  { value: "27", label: "已成功发布" },
-  { value: "210万+", label: "内容总曝光量" },
-  { value: "540", label: "带来注册用户" },
-  { value: "10.9%", label: "注册转化率" },
+  { label: "已发布 KOL", value: "27", sub: "个" },
+  { label: "总投放费用", value: "$49,430", sub: "" },
+  { label: "CPM 播放量", value: "2.25M", sub: "非IG" },
+  { label: "总互动数", value: "19,655", sub: "赞+评论" },
+  { label: "总点击数", value: "4,966", sub: "UTM" },
+  { label: "总注册数", value: "549", sub: "UTM 拉新" },
 ];
 
-export const SlideDB03KOLOverview = () => (
-  <SlideLayout title="KOL 项目总览">
-    <div className="flex flex-col h-full justify-center space-y-8 md:space-y-12 px-2 md:px-8">
-      {/* KPI Cards */}
-      <div className="grid grid-cols-5 gap-3 md:gap-6">
-        {kpis.map((kpi) => (
-          <div
-            key={kpi.label}
-            className="flex flex-col items-center justify-center p-4 md:p-6 rounded-xl border border-border/50 bg-card/50"
-          >
-            <span className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary">
-              {kpi.value}
-            </span>
-            <span className="text-xs md:text-sm text-muted-foreground mt-2 text-center">
-              {kpi.label}
-            </span>
-          </div>
-        ))}
-      </div>
+const metrics = [
+  { label: "CPM", value: "$16.53", desc: "非IG加权均值", color: "text-blue-400" },
+  { label: "CPE", value: "$2.51", desc: "全平台加权", color: "text-green-400" },
+  { label: "CPA", value: "$90.04", desc: "全平台加权", color: "text-primary" },
+];
 
-      {/* Pipeline */}
-      <div className="space-y-4">
-        <h3 className="text-lg md:text-2xl font-bold">管道阶段分布</h3>
-        <div className="space-y-3">
-          {[
-            { stage: "已发布", count: 27, pct: 58.7, color: "bg-primary" },
-            { stage: "Idea 确认中", count: 9, pct: 19.6, color: "bg-primary/60" },
-            { stage: "脚本撰写/审核", count: 5, pct: 10.9, color: "bg-primary/40" },
-            { stage: "视频制作中", count: 4, pct: 8.7, color: "bg-primary/30" },
-            { stage: "待发布确认", count: 1, pct: 2.2, color: "bg-primary/20" },
-          ].map((item) => (
-            <div key={item.stage} className="flex items-center gap-3 md:gap-4">
-              <span className="text-xs md:text-sm text-muted-foreground w-28 md:w-36 shrink-0 text-right">
-                {item.stage}
-              </span>
-              <div className="flex-1 h-6 md:h-8 bg-muted/30 rounded-full overflow-hidden">
-                <div
-                  className={`h-full ${item.color} rounded-full flex items-center justify-end pr-2 md:pr-3 transition-all`}
-                  style={{ width: `${Math.max(item.pct, 5)}%` }}
-                >
-                  <span className="text-xs md:text-sm font-bold text-primary-foreground">
-                    {item.count}
-                  </span>
-                </div>
-              </div>
-              <span className="text-xs md:text-sm text-muted-foreground w-12 shrink-0">
-                {item.pct}%
-              </span>
+const agencies = [
+  { name: "Inpander", kols: 13, cost: "$29,050", views: "1.25M", regs: 349, cpm: "$23.31", cpa: "$83.24" },
+  { name: "LUMINARY", kols: 14, cost: "$20,380", views: "1.00M", regs: 200, cpm: "$20.37", cpa: "$101.90" },
+];
+
+export function SlideDB03KOLOverview() {
+  return (
+    <SlideLayout>
+      <SlideHeader title="KOL 投放数据总览" subtitle="数据截至 2026-04-14" />
+      <div className="flex flex-col gap-[40px] px-[80px]">
+        {/* KPI Cards */}
+        <div className="grid grid-cols-6 gap-[20px]">
+          {kpis.map((k) => (
+            <div key={k.label} className="bg-muted/30 border border-border/40 rounded-xl p-[24px] text-center">
+              <div className="text-[42px] font-bold text-primary leading-tight">{k.value}</div>
+              {k.sub && <div className="text-[18px] text-muted-foreground mt-[4px]">{k.sub}</div>}
+              <div className="text-[18px] text-muted-foreground mt-[8px]">{k.label}</div>
             </div>
           ))}
         </div>
-      </div>
 
-      <p className="text-xs md:text-sm text-muted-foreground">数据截至 2026年4月13日</p>
-    </div>
-  </SlideLayout>
-);
+        {/* Core Metrics */}
+        <div className="grid grid-cols-3 gap-[24px]">
+          {metrics.map((m) => (
+            <div key={m.label} className="bg-muted/20 border border-border/30 rounded-xl p-[28px] flex items-center gap-[24px]">
+              <div>
+                <div className={`text-[48px] font-bold ${m.color} leading-tight`}>{m.value}</div>
+                <div className="text-[20px] text-muted-foreground">{m.desc}</div>
+              </div>
+              <div className="text-[24px] font-semibold text-foreground/70 ml-auto">{m.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Agency Comparison */}
+        <div>
+          <div className="text-[24px] font-semibold text-foreground/80 mb-[16px]">Agency 对比</div>
+          <div className="grid grid-cols-2 gap-[24px]">
+            {agencies.map((a) => (
+              <div key={a.name} className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
+                <div className="text-[28px] font-bold text-foreground mb-[16px]">{a.name}</div>
+                <div className="grid grid-cols-3 gap-y-[12px] text-[18px]">
+                  <div><span className="text-muted-foreground">KOL数：</span><span className="text-foreground font-medium">{a.kols}</span></div>
+                  <div><span className="text-muted-foreground">花费：</span><span className="text-foreground font-medium">{a.cost}</span></div>
+                  <div><span className="text-muted-foreground">播放：</span><span className="text-foreground font-medium">{a.views}</span></div>
+                  <div><span className="text-muted-foreground">注册：</span><span className="text-foreground font-medium">{a.regs}</span></div>
+                  <div><span className="text-muted-foreground">CPM：</span><span className="text-blue-400 font-medium">{a.cpm}</span></div>
+                  <div><span className="text-muted-foreground">CPA：</span><span className="text-primary font-medium">{a.cpa}</span></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </SlideLayout>
+  );
+}

@@ -1,85 +1,100 @@
-import { SlideLayout } from "@/components/slides";
+import { SlideLayout } from "@/components/slides/SlideLayout";
+import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const platforms = [
-  { name: "YouTube", clicks: "2,208", signups: 455, rate: "20.6%", highlight: true },
-  { name: "Instagram", clicks: "464", signups: 50, rate: "10.8%", highlight: false },
-  { name: "TikTok", clicks: "2,276", signups: 35, rate: "1.5%", highlight: false },
+  {
+    name: "TikTok",
+    kols: 5,
+    cost: "$7,850",
+    views: "1.22M",
+    interactions: "5,891",
+    regs: 8,
+    cpm: "$6.42",
+    cpe: "$1.33",
+    cpa: "$981",
+    color: "bg-cyan-500",
+    highlight: "CPM 最低",
+    verdict: "曝光效率极高，但 UTM 拉新极差",
+  },
+  {
+    name: "YouTube",
+    kols: 16,
+    cost: "$33,250",
+    views: "1.02M",
+    interactions: "10,852",
+    regs: 495,
+    cpm: "$32.48",
+    cpe: "$3.06",
+    cpa: "$67",
+    color: "bg-red-500",
+    highlight: "CPA 最优",
+    verdict: "拉新效率最高，核心渠道",
+  },
+  {
+    name: "Instagram",
+    kols: 6,
+    cost: "$8,330",
+    views: "N/A",
+    interactions: "2,912",
+    regs: 46,
+    cpm: "N/A",
+    cpe: "$2.86",
+    cpa: "$181",
+    color: "bg-purple-500",
+    highlight: "质量最优",
+    verdict: "API 无播放数据，ariacodez 用户质量极高",
+  },
 ];
 
-const reasons = [
-  { title: "内容深度", desc: "YouTube 7-20min 深度内容 → 注册意向被充分激活" },
-  { title: "用户意图", desc: "YouTube 用户主动搜索学习，TikTok 用户以娱乐为主" },
-  { title: "链接可达性", desc: "YouTube 描述区直接放链接，TikTok 需跳转 Bio" },
-  { title: "长尾效应", desc: "YouTube 搜索属性带来持续流量，TikTok 72h 后衰减" },
-];
-
-export const SlideDB05PlatformConversion = () => (
-  <SlideLayout title="平台转化效率对比">
-    <div className="flex flex-col h-full justify-center space-y-6 md:space-y-8 px-2 md:px-8">
-      {/* Core finding */}
-      <div className="flex items-center justify-center">
-        <div className="px-6 py-3 md:px-10 md:py-4 rounded-2xl bg-primary/10 border border-primary/30">
-          <span className="text-lg md:text-3xl font-bold">
-            YouTube 转化率是 TikTok 的{" "}
-            <span className="text-primary text-2xl md:text-5xl">13.7x</span>
-          </span>
-        </div>
-      </div>
-
-      {/* Platform comparison bars */}
-      <div className="space-y-4">
-        {platforms.map((p) => (
-          <div key={p.name} className="flex items-center gap-3 md:gap-4">
-            <span className="text-sm md:text-lg font-bold w-24 md:w-28 shrink-0 text-right">
-              {p.name}
-            </span>
-            <div className="flex-1 h-10 md:h-14 bg-muted/30 rounded-xl overflow-hidden relative">
-              <div
-                className={`h-full rounded-xl flex items-center px-3 md:px-4 ${
-                  p.highlight ? "bg-primary" : "bg-muted-foreground/30"
-                }`}
-                style={{ width: `${(parseFloat(p.rate) / 20.6) * 100}%` }}
-              >
-                <span
-                  className={`text-sm md:text-lg font-bold ${
-                    p.highlight ? "text-primary-foreground" : "text-foreground"
-                  }`}
-                >
-                  {p.rate}
-                </span>
+export function SlideDB05PlatformConversion() {
+  return (
+    <SlideLayout>
+      <SlideHeader title="平台效率对比" subtitle="TikTok vs YouTube vs Instagram" />
+      <div className="flex flex-col gap-[32px] px-[80px]">
+        <div className="grid grid-cols-3 gap-[28px]">
+          {platforms.map((p) => (
+            <div key={p.name} className="bg-muted/20 border border-border/30 rounded-xl p-[32px] flex flex-col gap-[20px]">
+              <div className="flex items-center gap-[12px]">
+                <div className={`w-[14px] h-[14px] rounded-full ${p.color}`} />
+                <span className="text-[32px] font-bold text-foreground">{p.name}</span>
+                <span className="ml-auto text-[16px] px-[12px] py-[4px] rounded-full bg-primary/20 text-primary font-medium">{p.highlight}</span>
               </div>
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 text-xs md:text-sm text-muted-foreground">
-                {p.signups} 注册 / {p.clicks} 点击
+              <div className="grid grid-cols-2 gap-y-[14px] gap-x-[16px] text-[18px]">
+                <div><span className="text-muted-foreground">KOL数：</span><span className="font-medium">{p.kols}</span></div>
+                <div><span className="text-muted-foreground">花费：</span><span className="font-medium">{p.cost}</span></div>
+                <div><span className="text-muted-foreground">播放量：</span><span className="font-medium">{p.views}</span></div>
+                <div><span className="text-muted-foreground">互动数：</span><span className="font-medium">{p.interactions}</span></div>
+                <div><span className="text-muted-foreground">注册数：</span><span className="font-bold text-primary">{p.regs}</span></div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Why YouTube wins */}
-      <div className="space-y-3">
-        <h3 className="text-base md:text-xl font-bold text-muted-foreground">
-          YouTube 转化率远超 TikTok 的 4 个核心原因
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {reasons.map((r) => (
-            <div
-              key={r.title}
-              className="p-3 md:p-4 rounded-xl border border-border/50 bg-card/50 space-y-1"
-            >
-              <span className="text-sm md:text-base font-bold text-primary">{r.title}</span>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
+              <div className="border-t border-border/30 pt-[16px] grid grid-cols-3 gap-[8px] text-center">
+                <div>
+                  <div className="text-[26px] font-bold text-blue-400">{p.cpm}</div>
+                  <div className="text-[14px] text-muted-foreground">CPM</div>
+                </div>
+                <div>
+                  <div className="text-[26px] font-bold text-green-400">{p.cpe}</div>
+                  <div className="text-[14px] text-muted-foreground">CPE</div>
+                </div>
+                <div>
+                  <div className="text-[26px] font-bold text-primary">{p.cpa}</div>
+                  <div className="text-[14px] text-muted-foreground">CPA</div>
+                </div>
+              </div>
+              <div className="text-[17px] text-muted-foreground italic">{p.verdict}</div>
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="p-3 md:p-4 rounded-xl bg-green-500/10 border border-green-500/30">
-        <p className="text-xs md:text-sm text-green-400">
-          <span className="font-bold">战略结论：</span>
-          未来 KOL 资源配置应明显向 YouTube 倾斜，短视频平台定位为「品牌曝光」而非「用户获取」
-        </p>
+        {/* Key Insight */}
+        <div className="bg-primary/10 border border-primary/30 rounded-xl p-[28px]">
+          <div className="text-[22px] font-semibold text-primary mb-[10px]">核心发现</div>
+          <div className="grid grid-cols-3 gap-[20px] text-[18px] text-foreground/80">
+            <div>YouTube CPA $67 是 TikTok 的 <span className="text-primary font-bold">1/14</span>，是最高效拉新渠道</div>
+            <div>TikTok CPM $6.42 最低，但注册仅 <span className="text-primary font-bold">8 人</span>，流量难以转化</div>
+            <div>Instagram ariacodez 发布率 <span className="text-primary font-bold">34.2%</span>，用户质量全场最高</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </SlideLayout>
-);
+    </SlideLayout>
+  );
+}
