@@ -7,35 +7,50 @@ const channels = [
     label: "X / Twitter",
     color: "#1DA1F2",
     url: "https://x.com/EnterProAI/status/2039916069582967043",
-    stat: "830K views",
-  },
-  {
-    key: "youtube",
-    label: "YouTube",
-    color: "#FF0000",
-    url: "https://www.youtube.com/watch?v=KfYa99r7UiY",
-    stat: "12K+ views",
-  },
-  {
-    key: "tiktok",
-    label: "TikTok",
-    color: "#EE1D52",
-    url: "https://www.tiktok.com/@enter.pro.ai/video/7624102436260564237",
-    stat: "5.2K views",
+    image: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100006299/16c5.png",
+    stat: "830K",
+    statLabel: "views",
+    sub: "54 RT / 122 Likes",
   },
   {
     key: "blog",
     label: "Blog",
     color: "#F97316",
     url: "https://blog.enter.pro/blog/how-i-built-a-fully-autonomous-ai-dating-show-inspired-by-singles-inferno",
-    stat: "2.8K reads",
+    image: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100006299/e587.png",
+    stat: "2.8K",
+    statLabel: "reads",
+    sub: "User Story feature",
   },
   {
     key: "forum",
     label: "Forum",
     color: "#A855F7",
     url: "https://forum.enter.pro/t/ed4dcf8e-893b-4323-95b0-5047a59c2a75?hl=activities",
-    stat: "1.2K views",
+    image: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100006299/8bf3.png",
+    stat: "1.2K",
+    statLabel: "views",
+    sub: "Community post",
+  },
+  {
+    key: "youtube",
+    label: "YouTube",
+    color: "#FF0000",
+    url: "https://www.youtube.com/watch?v=KfYa99r7UiY",
+    image: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100006299/3c52.png",
+    stat: "4K",
+    statLabel: "views",
+    sub: "0:38 demo video",
+  },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    color: "#EE1D52",
+    url: "https://www.tiktok.com/@enter.pro.ai/video/7624102436260564237",
+    image: "https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100006299/a8a6.png",
+    stat: "5.2K",
+    statLabel: "views",
+    sub: "29 likes / 310 shares",
   },
 ];
 
@@ -46,100 +61,132 @@ export const SlideDB11PGCAIApp = () => {
     <SlideLayout title="PGC 物料再利用">
       <div className="flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-end justify-between mb-[20px]">
+        <div className="flex items-end justify-between mb-[16px]">
           <div>
-            <p className="text-[12px] text-muted-foreground/50 tracking-widest uppercase mb-[2px]">
+            <p className="text-[11px] text-muted-foreground/50 tracking-widest uppercase mb-[2px]">
               Content Repurposing
             </p>
-            <h2 className="text-[26px] font-bold tracking-tight text-foreground/90">
+            <h2 className="text-[24px] font-bold tracking-tight text-foreground/90">
               一份内容 → <span className="text-primary">五渠道</span> 分发
             </h2>
           </div>
           <div className="flex items-baseline gap-[6px]">
-            <span className="text-[36px] font-black text-primary leading-none">850K+</span>
-            <span className="text-[13px] text-muted-foreground/60">total reach</span>
+            <span className="text-[32px] font-black text-primary leading-none">850K+</span>
+            <span className="text-[12px] text-muted-foreground/60">total reach</span>
           </div>
         </div>
 
-        {/* Preview grid */}
-        <div className="flex-1 flex gap-[12px]">
+        {/* Cards */}
+        <div className="flex-1 flex gap-[10px] min-h-0">
           {channels.map((ch) => {
             const isHovered = hovered === ch.key;
+            const hasHover = hovered !== null;
+            const isCollapsed = hasHover && !isHovered;
+
             return (
               <div
                 key={ch.key}
-                className="relative rounded-[14px] overflow-hidden border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] cursor-pointer"
+                className="relative rounded-[12px] overflow-hidden cursor-pointer"
                 style={{
-                  flex: isHovered ? 3 : 1,
-                  borderColor: isHovered ? `${ch.color}50` : "rgba(255,255,255,0.06)",
-                  boxShadow: isHovered ? `0 0 40px ${ch.color}15` : "none",
+                  flex: isHovered ? 4 : isCollapsed ? 0.6 : 1,
+                  transition: "flex 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease",
+                  boxShadow: isHovered ? `0 0 50px ${ch.color}20` : "none",
+                  border: `1px solid ${isHovered ? `${ch.color}40` : "rgba(255,255,255,0.06)"}`,
                 }}
                 onMouseEnter={() => setHovered(ch.key)}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => window.open(ch.url, "_blank")}
               >
-                {/* Browser chrome bar */}
-                <div
-                  className="h-[32px] flex items-center px-[10px] gap-[6px] shrink-0 transition-colors duration-300"
+                {/* Background image */}
+                <img
+                  src={ch.image}
+                  alt={ch.label}
+                  crossOrigin="anonymous"
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500"
                   style={{
-                    backgroundColor: isHovered ? `${ch.color}18` : "rgba(255,255,255,0.03)",
-                    borderBottom: `1px solid ${isHovered ? `${ch.color}25` : "rgba(255,255,255,0.04)"}`,
+                    filter: isHovered ? "brightness(0.85)" : isCollapsed ? "brightness(0.3) blur(2px)" : "brightness(0.5)",
                   }}
-                >
-                  <div className="flex gap-[4px]">
-                    <div className="w-[7px] h-[7px] rounded-full bg-foreground/10" />
-                    <div className="w-[7px] h-[7px] rounded-full bg-foreground/10" />
-                    <div className="w-[7px] h-[7px] rounded-full bg-foreground/10" />
-                  </div>
-                  {isHovered && (
-                    <div className="flex-1 mx-[8px] h-[18px] rounded-[4px] bg-foreground/[0.04] flex items-center px-[6px]">
-                      <span className="text-[9px] text-muted-foreground/40 truncate">
-                        {ch.url.replace("https://", "")}
+                />
+
+                {/* Gradient overlay */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-400"
+                  style={{
+                    background: isHovered
+                      ? `linear-gradient(to top, ${ch.color}60 0%, transparent 50%)`
+                      : `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)`,
+                  }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-[14px]">
+                  {/* Collapsed: just icon + label vertical */}
+                  {isCollapsed && (
+                    <div className="flex-1 flex flex-col items-center justify-center gap-[8px]">
+                      <div
+                        className="w-[32px] h-[32px] rounded-[8px] flex items-center justify-center font-black text-[14px]"
+                        style={{ backgroundColor: ch.color, color: "#fff" }}
+                      >
+                        {ch.label[0]}
+                      </div>
+                      <span
+                        className="text-[10px] font-semibold tracking-wider"
+                        style={{
+                          writingMode: "vertical-lr",
+                          color: "rgba(255,255,255,0.6)",
+                        }}
+                      >
+                        {ch.label}
                       </span>
                     </div>
                   )}
-                </div>
 
-                {/* iframe preview */}
-                <div className="relative flex-1" style={{ height: "calc(100% - 32px)" }}>
-                  <iframe
-                    src={ch.url}
-                    title={ch.label}
-                    className="absolute inset-0 border-none pointer-events-none"
-                    style={{
-                      width: "1440px",
-                      height: "900px",
-                      transform: isHovered ? "scale(0.48)" : "scale(0.22)",
-                      transformOrigin: "top left",
-                      transition: "transform 0.5s cubic-bezier(0.4,0,0.2,1)",
-                    }}
-                    sandbox="allow-scripts allow-same-origin"
-                    loading="lazy"
-                  />
+                  {/* Normal / Hovered state */}
+                  {!isCollapsed && (
+                    <>
+                      <div className="mt-auto">
+                        {/* Platform badge */}
+                        <div className="flex items-center gap-[6px] mb-[6px]">
+                          <div
+                            className="w-[24px] h-[24px] rounded-[6px] flex items-center justify-center font-black text-[11px]"
+                            style={{ backgroundColor: ch.color, color: "#fff" }}
+                          >
+                            {ch.label[0]}
+                          </div>
+                          <span className="text-[12px] font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
+                            {ch.label}
+                          </span>
+                        </div>
 
-                  {/* Collapsed overlay with label + stat */}
-                  <div
-                    className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-400"
-                    style={{
-                      opacity: isHovered ? 0 : 1,
-                      pointerEvents: isHovered ? "none" : "auto",
-                      background: `linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%)`,
-                    }}
-                  >
-                    <div
-                      className="w-[40px] h-[40px] rounded-[10px] flex items-center justify-center text-white font-black text-[18px] mb-[8px]"
-                      style={{ backgroundColor: ch.color }}
-                    >
-                      {ch.label[0]}
-                    </div>
-                    <span className="text-[13px] font-semibold text-white/90">{ch.label}</span>
-                    <span
-                      className="text-[18px] font-black mt-[4px]"
-                      style={{ color: ch.color }}
-                    >
-                      {ch.stat}
-                    </span>
-                  </div>
+                        {/* Stats */}
+                        <div className="flex items-baseline gap-[4px]">
+                          <span
+                            className="font-black leading-none"
+                            style={{
+                              fontSize: isHovered ? "36px" : "22px",
+                              color: ch.color,
+                              transition: "font-size 0.4s ease",
+                            }}
+                          >
+                            {ch.stat}
+                          </span>
+                          <span className="text-[11px] font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
+                            {ch.statLabel}
+                          </span>
+                        </div>
+
+                        {/* Sub info on hover */}
+                        {isHovered && (
+                          <p
+                            className="text-[12px] mt-[4px] font-medium"
+                            style={{ color: "rgba(255,255,255,0.55)" }}
+                          >
+                            {ch.sub}
+                          </p>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             );
