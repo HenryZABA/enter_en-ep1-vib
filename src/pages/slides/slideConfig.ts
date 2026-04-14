@@ -61,6 +61,7 @@ import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 import { SlideDB13Activities } from "./SlideDB13Activities";
 import { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
 import { SlideDB15AITools } from "./SlideDB15AITools";
+import { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
 import { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 import { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 import { SlideDB18End } from "./SlideDB18End";
@@ -130,6 +131,7 @@ export const slides = [
   SlideDB13Activities,
   SlideDB14AIToolsPart,
   SlideDB15AITools,
+  SlideDB15bAIShowcase,
   SlideDB19Suggestions,
   SlideDB20Learnings,
   SlideDB16FuturePart,
@@ -207,6 +209,7 @@ const dbSectionNames = [
   "Part 3 运营活动", // DB13
   "Part 4 AI 工具", // DB14
   "Part 4 AI 工具", // DB15
+  "Part 4 AI 工具", // DB15b Showcase
   "运营建议", // DB19
   "我学到了什么", // DB20
   "Part 5 未来规划", // DB16
@@ -297,6 +300,7 @@ const dbSlideTitles = [
   "活动总览",
   "Part 4 AI 工具使用",
   "AI 工具全景",
+  "AI 工具实战展示",
   "运营建议与反思",
   "我学到了什么",
   "Part 5 未来发展规划",
