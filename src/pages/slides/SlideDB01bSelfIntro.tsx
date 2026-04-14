@@ -1,11 +1,12 @@
 import { SlideLayout } from "@/components/slides";
-import { Megaphone, Palette, TrendingUp, Bot } from "lucide-react";
+import { Megaphone, Palette, TrendingUp, Bot, Rocket } from "lucide-react";
 
 const sections = [
   { num: "01", icon: Megaphone, title: "KOL 达人运营", sub: "Agency 对接 / 达人筛选 / 脚本审核 / 数据追踪" },
   { num: "02", icon: Palette, title: "PGC 内容制作", sub: "落地页 / 模板分析 / 自动化批量生产" },
   { num: "03", icon: TrendingUp, title: "运营活动策划", sub: "Hackathon / Solo Founder / 社群运营" },
   { num: "04", icon: Bot, title: "AI 工具开发", sub: "Agent / 工作流自动化 / 知识库 / Skill" },
+  { num: "05", icon: Rocket, title: "未来规划", sub: "KOL 工程化 / AI 自动化 / 职业进化" },
 ];
 
 export const SlideDB01bSelfIntro = () => (
@@ -14,7 +15,7 @@ export const SlideDB01bSelfIntro = () => (
       {/* Left panel */}
       <div className="w-[420px] shrink-0 flex flex-col justify-center px-[60px] relative z-10">
         <div className="mb-[48px]">
-          <p className="text-[13px] uppercase tracking-[4px] text-muted-foreground/50 mb-[16px]">
+          <p className="text-[13px] uppercase tracking-[4px] text-muted-foreground/80 mb-[16px]">
             Overview
           </p>
           <h2 className="text-[46px] font-extralight leading-[1.1] tracking-tight text-foreground/90">
@@ -27,7 +28,7 @@ export const SlideDB01bSelfIntro = () => (
 
         <div className="w-[40px] h-[1px] bg-foreground/20 mb-[32px]" />
 
-        <p className="text-[15px] leading-[1.8] text-muted-foreground/70 font-light">
+        <p className="text-[15px] leading-[1.8] text-muted-foreground font-light">
           横向覆盖从内容到技术
           <br />
           的全链路增长能力
@@ -41,7 +42,7 @@ export const SlideDB01bSelfIntro = () => (
           ].map((d) => (
             <div key={d.l}>
               <div className="text-[28px] font-extralight text-foreground/80 leading-none">{d.v}</div>
-              <div className="text-[11px] uppercase tracking-[2px] text-muted-foreground/40 mt-[6px]">{d.l}</div>
+              <div className="text-[11px] uppercase tracking-[2px] text-muted-foreground/70 mt-[6px]">{d.l}</div>
             </div>
           ))}
         </div>
@@ -54,15 +55,15 @@ export const SlideDB01bSelfIntro = () => (
       <div className="flex-1 flex flex-col justify-center px-[60px]">
         {sections.map((s, i) => (
           <div key={s.num}>
-            <div className="group flex items-center gap-[24px] py-[28px] px-[24px] rounded-[16px] transition-all duration-300 hover:bg-foreground/[0.03] hover:backdrop-blur-sm cursor-default">
+            <div className="group flex items-center gap-[24px] py-[22px] px-[24px] rounded-[16px] transition-all duration-300 hover:bg-foreground/[0.03] hover:backdrop-blur-sm cursor-default">
               {/* Number */}
-              <span className="text-[36px] font-extralight text-foreground/[0.12] w-[56px] shrink-0 tabular-nums select-none">
+              <span className="text-[36px] font-extralight text-foreground/25 w-[56px] shrink-0 tabular-nums select-none">
                 {s.num}
               </span>
 
               {/* Icon */}
-              <div className="w-[44px] h-[44px] rounded-[12px] bg-foreground/[0.04] backdrop-blur-sm border border-foreground/[0.06] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-foreground/[0.07]">
-                <s.icon className="w-[20px] h-[20px] text-foreground/40 transition-colors group-hover:text-foreground/60" />
+              <div className="w-[44px] h-[44px] rounded-[12px] bg-foreground/[0.06] backdrop-blur-sm border border-foreground/[0.08] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-foreground/[0.10]">
+                <s.icon className="w-[20px] h-[20px] text-foreground/60 transition-colors group-hover:text-foreground/80" />
               </div>
 
               {/* Text */}
@@ -70,7 +71,7 @@ export const SlideDB01bSelfIntro = () => (
                 <h3 className="text-[20px] font-medium tracking-tight text-foreground/80 transition-colors group-hover:text-foreground">
                   {s.title}
                 </h3>
-                <p className="text-[13px] text-muted-foreground/40 mt-[4px] font-light">
+                <p className="text-[13px] text-muted-foreground/70 mt-[4px] font-light">
                   {s.sub}
                 </p>
               </div>
