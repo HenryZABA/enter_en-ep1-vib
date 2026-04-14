@@ -1,5 +1,12 @@
 import { SlideLayout } from "@/components/slides";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
+
+interface Star {
+  x: number;
+  y: number;
+  z: number;
+  pz: number;
+}
 
 const columns = [
   {
@@ -40,29 +47,29 @@ const columns = [
   },
 ];
 
+const NUM_STARS = 200;
+
+function createStar(): Star {
+  return {
+    x: (Math.random() - 0.5) * 2,
+    y: (Math.random() - 0.5) * 2,
+    z: Math.random() * 1,
+    pz: 0,
+  };
+}
+
 export const SlideDB17FuturePlans = () => {
   const [hovered, setHovered] = useState<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
-  const particlesRef = useRef<
-    { x: number; y: number; vx: number; vy: number; r: number; alpha: number; decay: number }[]
-  >([]);
+  const starsRef = useRef<Star[]>([]);
+  const speedRef = useRef(0);
   const isCard4Hovered = hovered === 3;
 
-  const initParticles = useCallback((w: number, h: number) => {
-    const pts = [];
-    for (let i = 0; i < 80; i++) {
-      pts.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4 - 0.15,
-        r: Math.random() * 2 + 0.5,
-        alpha: Math.random() * 0.6 + 0.1,
-        decay: Math.random() * 0.003 + 0.001,
-      });
+  useEffect(() => {
+    if (starsRef.current.length === 0) {
+      starsRef.current = Array.from({ length: NUM_STARS }, createStar);
     }
-    particlesRef.current = pts;
   }, []);
 
   useEffect(() => {
@@ -76,74 +83,77 @@ export const SlideDB17FuturePlans = () => {
       if (!rect) return;
       canvas.width = rect.width * 2;
       canvas.height = rect.height * 2;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      ctx.scale(2, 2);
-      if (particlesRef.current.length === 0) initParticles(rect.width, rect.height);
     };
     resize();
 
     const draw = () => {
-      const w = canvas.width / 2;
-      const h = canvas.height / 2;
-      ctx.clearRect(0, 0, w, h);
+      const w = canvas.width;
+      const h = canvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
 
-      if (!isCard4Hovered) {
-        // Fade out slowly
-        particlesRef.current.forEach((p) => {
-          p.alpha = Math.max(0, p.alpha - 0.02);
-        });
-      }
+      // Target speed based on hover
+      const targetSpeed = isCard4Hovered ? 0.015 : 0.001;
+      speedRef.current += (targetSpeed - speedRef.current) * 0.05;
+      const speed = speedRef.current;
 
-      // Draw connections
-      const pts = particlesRef.current;
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const dx = pts[i].x - pts[j].x;
-          const dy = pts[i].y - pts[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 60) {
-            const lineAlpha = ((1 - dist / 60) * Math.min(pts[i].alpha, pts[j].alpha)) * 0.5;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(226, 77, 143, ${lineAlpha})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.stroke();
-          }
-        }
-      }
+      // Trail effect - dark fill with low alpha
+      ctx.fillStyle = isCard4Hovered
+        ? "rgba(10, 10, 14, 0.25)"
+        : "rgba(10, 10, 14, 0.4)";
+      ctx.fillRect(0, 0, w, h);
 
-      // Draw & update particles
-      pts.forEach((p) => {
-        if (isCard4Hovered && p.alpha < 0.6) {
-          p.alpha = Math.min(0.6, p.alpha + 0.01);
+      const stars = starsRef.current;
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.pz = s.z;
+        s.z -= speed;
+
+        if (s.z <= 0.001) {
+          s.x = (Math.random() - 0.5) * 2;
+          s.y = (Math.random() - 0.5) * 2;
+          s.z = 1;
+          s.pz = 1;
+          continue;
         }
 
+        // Current position
+        const sx = (s.x / s.z) * cx + cx;
+        const sy = (s.y / s.z) * cy + cy;
+
+        // Previous position (for streak)
+        const px = (s.x / s.pz) * cx + cx;
+        const py = (s.y / s.pz) * cy + cy;
+
+        // Size & brightness based on depth
+        const depth = 1 - s.z;
+        const r = Math.max(0.3, depth * 2);
+        const alpha = Math.min(1, depth * 1.5);
+
+        if (isCard4Hovered && speed > 0.005) {
+          // Draw streaks when flying
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(sx, sy);
+          ctx.strokeStyle = `rgba(180, 180, 195, ${alpha * 0.7})`;
+          ctx.lineWidth = r * 0.8;
+          ctx.stroke();
+        }
+
+        // Draw star dot
         ctx.beginPath();
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2);
-        grad.addColorStop(0, `rgba(226, 77, 143, ${p.alpha})`);
-        grad.addColorStop(0.5, `rgba(168, 85, 247, ${p.alpha * 0.5})`);
-        grad.addColorStop(1, `rgba(168, 85, 247, 0)`);
-        ctx.fillStyle = grad;
-        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
+        ctx.arc(sx, sy, r, 0, Math.PI * 2);
+        const grey = Math.floor(120 + depth * 100);
+        ctx.fillStyle = `rgba(${grey}, ${grey}, ${grey + 15}, ${alpha})`;
         ctx.fill();
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h;
-        if (p.y > h) p.y = 0;
-      });
+      }
 
       animRef.current = requestAnimationFrame(draw);
     };
 
     draw();
     return () => cancelAnimationFrame(animRef.current);
-  }, [isCard4Hovered, initParticles]);
+  }, [isCard4Hovered]);
 
   return (
     <SlideLayout title="">
@@ -188,39 +198,47 @@ export const SlideDB17FuturePlans = () => {
                     borderColor: isActive
                       ? `${col.accent}66`
                       : "hsl(var(--border) / 0.3)",
-                    background: isActive
-                      ? `linear-gradient(160deg, ${col.accent}15, transparent 60%)`
-                      : "hsl(var(--card) / 0.2)",
+                    background: hasItems
+                      ? isActive
+                        ? `linear-gradient(160deg, ${col.accent}15, transparent 60%)`
+                        : "hsl(var(--card) / 0.2)"
+                      : "transparent",
                   }}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  {/* Big number bg */}
-                  <span
-                    className="absolute -right-2 -top-6 text-[120px] md:text-[160px] font-black leading-none transition-all duration-500 select-none"
-                    style={{
-                      color: isActive ? `${col.accent}20` : `${col.accent}08`,
-                    }}
-                  >
-                    {col.num}
-                  </span>
+                  {/* Big number bg - hide for card 4 */}
+                  {hasItems && (
+                    <span
+                      className="absolute -right-2 -top-6 text-[120px] md:text-[160px] font-black leading-none transition-all duration-500 select-none"
+                      style={{
+                        color: isActive ? `${col.accent}20` : `${col.accent}08`,
+                      }}
+                    >
+                      {col.num}
+                    </span>
+                  )}
 
                   <div className="relative z-10 h-full flex flex-col p-4 md:p-6">
-                    {/* Accent line */}
-                    <div
-                      className="w-8 h-1 rounded-full mb-4 transition-all duration-500"
-                      style={{
-                        background: col.accent,
-                        width: isActive ? "48px" : "32px",
-                        opacity: isActive ? 1 : 0.5,
-                      }}
-                    />
-
-                    <h3 className="text-base md:text-xl font-bold mb-1 transition-colors duration-300"
-                      style={{ color: isActive ? col.accent : undefined }}
-                    >
-                      {col.title}
-                    </h3>
+                    {hasItems && (
+                      <>
+                        {/* Accent line */}
+                        <div
+                          className="w-8 h-1 rounded-full mb-4 transition-all duration-500"
+                          style={{
+                            background: col.accent,
+                            width: isActive ? "48px" : "32px",
+                            opacity: isActive ? 1 : 0.5,
+                          }}
+                        />
+                        <h3
+                          className="text-base md:text-xl font-bold mb-1 transition-colors duration-300"
+                          style={{ color: isActive ? col.accent : undefined }}
+                        >
+                          {col.title}
+                        </h3>
+                      </>
+                    )}
 
                     {hasItems ? (
                       <div
@@ -260,21 +278,28 @@ export const SlideDB17FuturePlans = () => {
                         ))}
                       </div>
                     ) : (
-                      <div className="flex-1 relative overflow-hidden">
+                      /* Starfield card */
+                      <div className="absolute inset-0 overflow-hidden rounded-2xl">
                         <canvas
                           ref={canvasRef}
                           className="absolute inset-0 w-full h-full"
+                          style={{ background: "#0a0a0e" }}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <p
-                            className="text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-700"
+                        <div className="absolute inset-0 flex items-center justify-center z-10">
+                          <h3
+                            className="text-lg md:text-2xl font-bold transition-all duration-700 text-center"
                             style={{
-                              color: isActive ? `${col.accent}90` : `${col.accent}30`,
-                              letterSpacing: isActive ? "0.35em" : "0.2em",
+                              color: isActive
+                                ? "rgba(255,255,255,0.9)"
+                                : "rgba(255,255,255,0.4)",
+                              textShadow: isActive
+                                ? "0 0 30px rgba(226,77,143,0.4), 0 0 60px rgba(226,77,143,0.15)"
+                                : "none",
+                              letterSpacing: isActive ? "0.15em" : "0.05em",
                             }}
                           >
-                            INFINITE
-                          </p>
+                            {col.title}
+                          </h3>
                         </div>
                       </div>
                     )}
