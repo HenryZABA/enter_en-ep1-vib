@@ -1,87 +1,69 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
 import { SlideHeader } from "@/components/slides/SlideHeader";
 
-const cpmData = [
-  { name: "alex.webnux", platform: "TikTok", cost: "$750", views: "661.5K", cpm: "$1.13" },
-  { name: "Eliana Pacheco", platform: "TikTok", cost: "$1,200", views: "455.2K", cpm: "$2.64" },
-  { name: "Web3World", platform: "YouTube", cost: "$5,500", views: "509.1K", cpm: "$10.80" },
-  { name: "techvorld", platform: "YouTube", cost: "$1,600", views: "114.5K", cpm: "$13.97" },
-  { name: "fatihlyfe", platform: "TikTok", cost: "$1,800", views: "91.4K", cpm: "$19.69" },
-  { name: "BeerMoneyForum", platform: "YouTube", cost: "$2,900", views: "105.3K", cpm: "$27.53" },
+const platforms = [
+  { name: "YouTube", kols: 16, cost: "$33,250", views: "1.02M", interactions: "10,852", regs: 495, color: "bg-red-500", barW: "90%" },
+  { name: "Instagram", kols: 6, cost: "$8,330", views: "--", interactions: "2,912", regs: 46, color: "bg-purple-500", barW: "8%" },
+  { name: "TikTok", kols: 5, cost: "$7,850", views: "1.22M", interactions: "5,891", regs: 8, color: "bg-cyan-500", barW: "1.5%" },
 ];
 
-const cpmHigh = [
-  { name: "Fatih Kilic", platform: "TikTok", cpm: "$213.33" },
-  { name: "Krrish", platform: "YouTube", cpm: "$391.49" },
-];
-
-const cpeTop = [
-  { name: "fatihlyfe", platform: "TikTok", interactions: "3,307", rate: "3.6%", cpe: "$0.54" },
-  { name: "Eliana Pacheco", platform: "TikTok", interactions: "2,163", rate: "0.5%", cpe: "$0.55" },
-  { name: "Web3World", platform: "YouTube", interactions: "8,955", rate: "1.8%", cpe: "$0.61" },
-  { name: "NexcopeAI", platform: "YouTube", interactions: "714", rate: "4.2%", cpe: "$1.05" },
-  { name: "ariacodez", platform: "Instagram", interactions: "1,657", rate: "7.8%", cpe: "$1.39" },
+const agencies = [
+  { name: "Inpander", kols: 13, cost: "$29,050", views: "1.25M", interactions: "13,183", regs: 349, cpm: "$23.31", cpe: "$2.20", cpa: "$83.24" },
+  { name: "LUMINARY", kols: 14, cost: "$20,380", views: "1.00M", interactions: "6,472", regs: 200, cpm: "$20.37", cpe: "$3.15", cpa: "$101.90" },
 ];
 
 export function SlideDB04Timeline() {
   return (
     <SlideLayout>
-      <SlideHeader title="CPM & CPE 详细排名" subtitle="花费/播放量 x 1000 | 花费/互动数" />
-      <div className="flex flex-col gap-[28px] px-[80px]">
-        <div className="grid grid-cols-2 gap-[28px]">
-          {/* CPM Best */}
-          <div className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
-            <div className="text-[22px] font-semibold text-blue-400 mb-[16px]">CPM Top 6（曝光效率最高）</div>
-            <div className="flex flex-col gap-[10px]">
-              {cpmData.map((k, i) => (
-                <div key={k.name} className="flex items-center gap-[8px] text-[17px]">
-                  <span className="text-muted-foreground w-[24px]">{i + 1}.</span>
-                  <span className="font-medium text-foreground w-[150px] truncate">{k.name}</span>
-                  <span className="text-muted-foreground text-[14px] w-[72px]">{k.platform}</span>
-                  <span className="text-foreground/70 w-[72px]">{k.views}</span>
-                  <span className="text-blue-400 font-bold ml-auto">{k.cpm}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-[16px] pt-[12px] border-t border-border/30">
-              <div className="text-[16px] text-red-400">CPM 异常高：{cpmHigh.map(k => `${k.name} ${k.cpm}`).join("、")}</div>
-            </div>
+      <SlideHeader title="二、平台分布 & 三、Agency 对比" subtitle="重点：YouTube 贡献 90% 注册" />
+      <div className="flex flex-col gap-[36px] px-[100px]">
+        {/* Platform Table */}
+        <div className="bg-muted/20 border border-border/30 rounded-xl p-[32px]">
+          <div className="text-[24px] font-semibold text-foreground/80 mb-[20px]">平台分布</div>
+          {/* Header */}
+          <div className="grid grid-cols-[140px_60px_100px_100px_100px_80px_1fr] gap-[8px] text-[16px] text-muted-foreground pb-[10px] border-b border-border/30">
+            <span>平台</span><span>KOL</span><span>花费</span><span>播放量</span><span>互动数</span><span>注册</span><span>注册占比</span>
           </div>
-
-          {/* CPE Best */}
-          <div className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
-            <div className="text-[22px] font-semibold text-green-400 mb-[16px]">CPE Top 5（互动效率最高）</div>
-            <div className="flex flex-col gap-[10px]">
-              {cpeTop.map((k, i) => (
-                <div key={k.name} className="flex items-center gap-[8px] text-[17px]">
-                  <span className="text-muted-foreground w-[24px]">{i + 1}.</span>
-                  <span className="font-medium text-foreground w-[150px] truncate">{k.name}</span>
-                  <span className="text-muted-foreground text-[14px] w-[72px]">{k.platform}</span>
-                  <span className="text-foreground/70 w-[80px]">{k.interactions}</span>
-                  <span className="text-foreground/60 w-[48px]">{k.rate}</span>
-                  <span className="text-green-400 font-bold ml-auto">{k.cpe}</span>
+          {platforms.map((p) => (
+            <div key={p.name} className="grid grid-cols-[140px_60px_100px_100px_100px_80px_1fr] gap-[8px] items-center py-[14px] border-b border-border/10 text-[18px]">
+              <div className="flex items-center gap-[8px]">
+                <div className={`w-[10px] h-[10px] rounded-full ${p.color}`} />
+                <span className="font-medium">{p.name}</span>
+              </div>
+              <span>{p.kols}</span>
+              <span>{p.cost}</span>
+              <span>{p.views}</span>
+              <span>{p.interactions}</span>
+              <span className="text-primary font-bold">{p.regs}</span>
+              <div className="flex items-center gap-[8px]">
+                <div className="flex-1 h-[18px] bg-muted/40 rounded-full overflow-hidden">
+                  <div className={`h-full ${p.color} rounded-full`} style={{ width: p.barW }} />
                 </div>
-              ))}
+                <span className="text-[14px] text-muted-foreground w-[40px]">{p.barW}</span>
+              </div>
             </div>
-            <div className="mt-[16px] pt-[12px] border-t border-border/30 text-[16px] text-muted-foreground">
-              TikTok 互动效率最高（fatihlyfe $0.54），YouTube Web3World 绝对互动量最大（8,955）
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Summary bar */}
-        <div className="bg-muted/10 border border-border/20 rounded-xl p-[24px] grid grid-cols-3 gap-[20px] text-center">
-          <div>
-            <div className="text-[32px] font-bold text-blue-400">$16.53</div>
-            <div className="text-[16px] text-muted-foreground">整体 CPM 加权均值</div>
-          </div>
-          <div>
-            <div className="text-[32px] font-bold text-green-400">$2.51</div>
-            <div className="text-[16px] text-muted-foreground">整体 CPE 加权均值</div>
-          </div>
-          <div>
-            <div className="text-[32px] font-bold text-primary">21</div>
-            <div className="text-[16px] text-muted-foreground">非IG有效CPM KOL数</div>
+        {/* Agency Table */}
+        <div className="bg-muted/20 border border-border/30 rounded-xl p-[32px]">
+          <div className="text-[24px] font-semibold text-foreground/80 mb-[20px]">Agency 管理对比</div>
+          <div className="grid grid-cols-2 gap-[28px]">
+            {agencies.map((a) => (
+              <div key={a.name} className="bg-background/40 rounded-lg p-[24px]">
+                <div className="text-[26px] font-bold text-foreground mb-[14px]">{a.name}</div>
+                <div className="grid grid-cols-3 gap-y-[10px] gap-x-[12px] text-[17px]">
+                  <div><span className="text-muted-foreground">KOL：</span>{a.kols}</div>
+                  <div><span className="text-muted-foreground">花费：</span>{a.cost}</div>
+                  <div><span className="text-muted-foreground">播放：</span>{a.views}</div>
+                  <div><span className="text-muted-foreground">互动：</span>{a.interactions}</div>
+                  <div><span className="text-muted-foreground">注册：</span><span className="text-primary font-bold">{a.regs}</span></div>
+                  <div><span className="text-muted-foreground">CPA：</span><span className="text-primary font-bold">{a.cpa}</span></div>
+                  <div><span className="text-muted-foreground">CPM：</span><span className="text-blue-400">{a.cpm}</span></div>
+                  <div><span className="text-muted-foreground">CPE：</span><span className="text-green-400">{a.cpe}</span></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
