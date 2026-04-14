@@ -55,6 +55,7 @@ import { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
+import { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
 import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 import { SlideDB13Activities } from "./SlideDB13Activities";
@@ -123,6 +124,7 @@ export const slides = [
   SlideDB07SystemBuilding,
   SlideDB09PGCPart,
   SlideDB10PGCPipeline,
+  SlideDB10bPGCShowcase,
   SlideDB11PGCAIApp,
   SlideDB12ActivityPart,
   SlideDB13Activities,
@@ -199,6 +201,7 @@ const dbSectionNames = [
   "Part 1 KOL 合作", // DB07
   "Part 2 PGC 制作", // DB09
   "Part 2 PGC 制作", // DB10
+  "Part 2 PGC 制作", // DB10b Showcase
   "Part 2 PGC 制作", // DB11
   "Part 3 运营活动", // DB12
   "Part 3 运营活动", // DB13
@@ -288,6 +291,7 @@ const dbSlideTitles = [
   "KOL 管理体系建设",
   "Part 2 PGC 内容制作",
   "PGC 自动化生产流程",
+  "PGC 自动化成果展示",
   "AI App 功能展示与孵化",
   "Part 3 运营活动",
   "活动总览",

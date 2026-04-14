@@ -55,6 +55,7 @@ export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 export { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
+export { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 export { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
 export { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 export { SlideDB13Activities } from "./SlideDB13Activities";
