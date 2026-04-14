@@ -19,7 +19,7 @@ export function SlideDB11bPGCRevenue() {
                 PGC 不只是内容，
               </h2>
               <h2 className="text-[42px] font-medium leading-[1.2] text-primary mb-8">
-                它本身就是一个盈利项目
+                如果它本身就是一个盈利项目
               </h2>
 
               <div className="h-px w-24 bg-primary/30 mb-8" />
