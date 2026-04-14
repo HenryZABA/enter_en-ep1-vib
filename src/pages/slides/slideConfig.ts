@@ -47,10 +47,10 @@ import { SlideDB01Cover } from "./SlideDB01Cover";
 import { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
 import { SlideDB02KOLPart } from "./SlideDB02KOLPart";
 import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
-import { SlideDB03bQ2Budget } from "./SlideDB03bQ2Budget";
+
 import { SlideDB04Timeline } from "./SlideDB04Timeline";
 import { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
-import { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
+
 import { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
@@ -117,11 +117,9 @@ export const slides = [
   SlideDB01bSelfIntro,
   SlideDB02KOLPart,
   SlideDB03KOLOverview,
-  SlideDB03bQ2Budget,
   SlideDB08WorkflowOptimization,
   SlideDB04Timeline,
   SlideDB05PlatformConversion,
-  SlideDB06StarKOLs,
   SlideDB07SystemBuilding,
   SlideDB09PGCPart,
   SlideDB10PGCPipeline,
@@ -195,11 +193,9 @@ const dbSectionNames = [
   "", // DB01b: Self Intro
   "Part 1 KOL 合作", // DB02
   "Part 1 KOL 合作", // DB03
-  "Part 1 KOL 合作", // DB03b Q2 Budget
   "Part 1 KOL 合作", // DB08 Workflow
   "Part 1 KOL 合作", // DB04
   "Part 1 KOL 合作", // DB05
-  "Part 1 KOL 合作", // DB06
   "Part 1 KOL 合作", // DB07
   "Part 2 PGC 制作", // DB09
   "Part 2 PGC 制作", // DB10
@@ -286,11 +282,9 @@ const dbSlideTitles = [
   "自我介绍",
   "Part 1 海外 KOL 合作",
   "KOL 项目总览",
-  "Q2 KOL 预算 & 人群画像",
   "工作流迭代与优化",
   "发布时间线 & 平台分布",
   "平台转化效率对比",
-  "明星 KOL 分析",
   "KOL 管理体系建设",
   "Part 2 PGC 内容制作",
   "PGC 自动化生产流程",
