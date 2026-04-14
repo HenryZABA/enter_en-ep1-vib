@@ -51,6 +51,7 @@ import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
 import { SlideDB04Timeline } from "./SlideDB04Timeline";
 import { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 
+import { SlideDB06CPATop } from "./SlideDB06CPATop";
 import { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
@@ -120,6 +121,7 @@ export const slides = [
   SlideDB08WorkflowOptimization,
   SlideDB04Timeline,
   SlideDB05PlatformConversion,
+  SlideDB06CPATop,
   SlideDB07SystemBuilding,
   SlideDB09PGCPart,
   SlideDB10PGCPipeline,
@@ -196,6 +198,7 @@ const dbSectionNames = [
   "Part 1 KOL 合作", // DB08 Workflow
   "Part 1 KOL 合作", // DB04
   "Part 1 KOL 合作", // DB05
+  "Part 1 KOL 合作", // DB06 CPA Top
   "Part 1 KOL 合作", // DB07
   "Part 2 PGC 制作", // DB09
   "Part 2 PGC 制作", // DB10
@@ -285,6 +288,7 @@ const dbSlideTitles = [
   "工作流迭代与优化",
   "发布时间线 & 平台分布",
   "平台转化效率对比",
+  "CPA 效率 Top KOL",
   "KOL 管理体系建设",
   "Part 2 PGC 内容制作",
   "PGC 自动化生产流程",

@@ -2,65 +2,101 @@ import { SlideLayout } from "@/components/slides/SlideLayout";
 import { SlideHeader } from "@/components/slides/SlideHeader";
 
 const platforms = [
-  { name: "YouTube", kols: 16, cost: "$33,250", views: "1.02M", interactions: "10,852", regs: 495, cpa: "$67.17", color: "bg-red-500" },
-  { name: "Instagram", kols: 6, cost: "$8,330", views: "—", interactions: "2,912", regs: 46, cpa: "$181.09", color: "bg-purple-500" },
-  { name: "TikTok", kols: 5, cost: "$7,850", views: "1.22M", interactions: "5,891", regs: 8, cpa: "—", color: "bg-cyan-500" },
+  { name: "YouTube", kols: 16, spend: 33250, views: "1.02M", interactions: 10852, regs: 495, cpa: "$67.17", color: "#ef4444", regPct: 90.2 },
+  { name: "Instagram", kols: 6, spend: 8330, views: "—", interactions: 2912, regs: 46, cpa: "$181.09", color: "#a855f7", regPct: 8.4 },
+  { name: "TikTok", kols: 5, spend: 7850, views: "1.22M", interactions: 5891, regs: 8, cpa: "—", color: "#06b6d4", regPct: 1.5 },
 ];
 
 const agencies = [
-  { name: "Inpander", kols: 13, cost: "$29,050", views: "1.25M", interactions: "13,183", regs: 349, cpm: "$23.31", cpe: "$2.20", cpa: "$83.24" },
-  { name: "LUMINARY", kols: 14, cost: "$20,380", views: "1.00M", interactions: "6,472", regs: 200, cpm: "$20.37", cpe: "$3.15", cpa: "$101.90" },
+  { name: "Inpander", kols: 13, spend: "$29,050", views: "1.25M", interactions: "13,183", regs: 349, cpm: "$23.31", cpe: "$2.20", cpa: "$83.24" },
+  { name: "LUMINARY", kols: 14, spend: "$20,380", views: "1.00M", interactions: "6,472", regs: 200, cpm: "$20.37", cpe: "$3.15", cpa: "$101.90" },
 ];
 
 export function SlideDB04Timeline() {
+  const maxSpend = 33250;
+  const maxRegs = 495;
+
   return (
     <SlideLayout>
-      <SlideHeader title="平台分布 & Agency 对比" subtitle="重点：YouTube CPA $67.17，贡献 90%+ 有效注册" />
-      <div className="flex flex-col gap-[32px] px-[80px]">
-        {/* Platform Table */}
-        <div className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
-          <div className="text-[22px] font-semibold text-foreground/80 mb-[16px]">平台分布</div>
-          <div className="grid grid-cols-[120px_50px_90px_80px_80px_70px_80px] gap-x-[12px] text-[15px] text-muted-foreground pb-[10px] border-b border-border/40">
-            <span>平台</span><span>KOL</span><span>花费</span><span>播放量</span><span>互动数</span><span>注册数</span><span>CPA</span>
-          </div>
+      <SlideHeader section="Part 1 KOL 合作" />
+      <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[36px]">
+        <h2 className="text-[48px] font-bold text-foreground">二、平台分布 & Agency 对比</h2>
+
+        {/* Platform visual comparison */}
+        <div className="flex gap-[24px]">
           {platforms.map((p) => (
-            <div key={p.name} className="grid grid-cols-[120px_50px_90px_80px_80px_70px_80px] gap-x-[12px] items-center py-[12px] border-b border-border/10 text-[17px]">
-              <div className="flex items-center gap-[8px]">
-                <div className={`w-[8px] h-[8px] rounded-full ${p.color} shrink-0`} />
-                <span className="font-medium">{p.name}</span>
+            <div key={p.name} className="flex-1 border border-border rounded-[16px] p-[24px] bg-muted/20">
+              <div className="flex items-center gap-[10px] mb-[16px]">
+                <div className="w-[12px] h-[12px] rounded-full" style={{ backgroundColor: p.color }} />
+                <span className="text-[24px] font-bold text-foreground">{p.name}</span>
+                <span className="text-[16px] text-muted-foreground ml-auto">{p.kols} KOL</span>
               </div>
-              <span>{p.kols}</span>
-              <span>{p.cost}</span>
-              <span>{p.views}</span>
-              <span>{p.interactions}</span>
-              <span className="text-primary font-bold">{p.regs}</span>
-              <span className="font-semibold">{p.cpa}</span>
+
+              {/* Spend bar */}
+              <div className="mb-[12px]">
+                <div className="flex justify-between text-[14px] text-muted-foreground mb-[4px]">
+                  <span>花费</span>
+                  <span className="font-semibold text-foreground">${p.spend.toLocaleString()}</span>
+                </div>
+                <div className="h-[8px] bg-muted rounded-full overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width: `${(p.spend / maxSpend) * 100}%`, backgroundColor: p.color }} />
+                </div>
+              </div>
+
+              {/* Reg bar */}
+              <div className="mb-[16px]">
+                <div className="flex justify-between text-[14px] text-muted-foreground mb-[4px]">
+                  <span>注册数</span>
+                  <span className="font-semibold text-foreground">{p.regs}</span>
+                </div>
+                <div className="h-[8px] bg-muted rounded-full overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width: `${(p.regs / maxRegs) * 100}%`, backgroundColor: p.color }} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-[8px] text-[14px]">
+                <div className="bg-background/50 rounded-[8px] p-[8px] text-center">
+                  <div className="text-muted-foreground">播放量</div>
+                  <div className="font-bold text-foreground">{p.views}</div>
+                </div>
+                <div className="bg-background/50 rounded-[8px] p-[8px] text-center">
+                  <div className="text-muted-foreground">互动</div>
+                  <div className="font-bold text-foreground">{p.interactions.toLocaleString()}</div>
+                </div>
+                <div className="bg-background/50 rounded-[8px] p-[8px] text-center">
+                  <div className="text-muted-foreground">CPA</div>
+                  <div className="font-bold" style={{ color: p.color }}>{p.cpa}</div>
+                </div>
+                <div className="bg-background/50 rounded-[8px] p-[8px] text-center">
+                  <div className="text-muted-foreground">注册占比</div>
+                  <div className="font-bold text-foreground">{p.regPct}%</div>
+                </div>
+              </div>
             </div>
           ))}
-          <div className="mt-[12px] text-[15px] text-primary/80 bg-primary/5 rounded-lg p-[12px]">
-            YouTube 是当前拉新效率最高的平台：CPA $67.17，贡献了 90% 以上的有效注册
-          </div>
         </div>
 
-        {/* Agency Cards */}
-        <div className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
-          <div className="text-[22px] font-semibold text-foreground/80 mb-[16px]">Agency 管理对比</div>
-          <div className="grid grid-cols-[160px_60px_100px_90px_90px_70px_80px_80px_80px] gap-x-[8px] text-[14px] text-muted-foreground pb-[10px] border-b border-border/40">
-            <span>Agency</span><span>KOL</span><span>花费</span><span>播放量</span><span>互动数</span><span>注册</span><span>CPM</span><span>CPE</span><span>CPA</span>
+        {/* Key insight */}
+        <div className="bg-primary/10 border border-primary/30 rounded-[12px] px-[24px] py-[14px] text-[18px]">
+          <span className="text-primary font-bold">核心发现：</span>
+          <span className="text-foreground">YouTube CPA $67.17，贡献 90%+ 有效注册，是当前拉新效率最高的平台</span>
+        </div>
+
+        {/* Agency comparison table */}
+        <div>
+          <h3 className="text-[28px] font-semibold text-foreground mb-[16px]">Agency 管理对比</h3>
+          <div className="grid grid-cols-9 gap-[2px] text-[16px]">
+            {["Agency", "KOL数", "花费", "播放量", "互动数", "注册数", "CPM", "CPE", "CPA"].map((h) => (
+              <div key={h} className="bg-muted/60 px-[12px] py-[10px] font-semibold text-muted-foreground text-center first:text-left first:rounded-tl-[8px] last:rounded-tr-[8px]">{h}</div>
+            ))}
+            {agencies.map((a, i) => (
+              [a.name, a.kols, a.spend, a.views, a.interactions, a.regs, a.cpm, a.cpe, a.cpa].map((v, j) => (
+                <div key={`${i}-${j}`} className={`px-[12px] py-[10px] text-center first:text-left ${i % 2 === 0 ? "bg-muted/20" : "bg-muted/10"} ${j === 0 ? "font-semibold text-foreground" : "text-foreground"} ${j === 8 ? "font-bold text-primary" : ""}`}>
+                  {v}
+                </div>
+              ))
+            ))}
           </div>
-          {agencies.map((a) => (
-            <div key={a.name} className="grid grid-cols-[160px_60px_100px_90px_90px_70px_80px_80px_80px] gap-x-[8px] items-center py-[14px] border-b border-border/10 text-[17px]">
-              <span className="font-bold">{a.name}</span>
-              <span>{a.kols}</span>
-              <span>{a.cost}</span>
-              <span>{a.views}</span>
-              <span>{a.interactions}</span>
-              <span className="text-primary font-bold">{a.regs}</span>
-              <span className="text-blue-400">{a.cpm}</span>
-              <span className="text-green-400">{a.cpe}</span>
-              <span className="text-primary font-semibold">{a.cpa}</span>
-            </div>
-          ))}
         </div>
       </div>
     </SlideLayout>

@@ -1,49 +1,75 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
 import { SlideHeader } from "@/components/slides/SlideHeader";
 
-const qualityKOLs = [
-  { name: "ariacodez", platform: "Instagram", users: 38, createRate: "60.5%", publishRate: "34.2%", stars: 5 },
-  { name: "NexcopeAI", platform: "YouTube", users: 9, createRate: "66.7%", publishRate: "33.3%", stars: 5 },
-  { name: "oMatheusdaIA", platform: "YouTube", users: 144, createRate: "41.7%", publishRate: "13.9%", stars: 4 },
-  { name: "Mikkel Lassalle", platform: "YouTube", users: 47, createRate: "55.3%", publishRate: "10.6%", stars: 4 },
-  { name: "BeerMoneyForum", platform: "YouTube", users: 34, createRate: "29.4%", publishRate: "11.8%", stars: 4 },
+const topKOLs = [
+  { name: "ariacodez", platform: "Instagram", users: 38, createRate: 60.5, publishRate: 34.2, stars: 5 },
+  { name: "NexcopeAI", platform: "YouTube", users: 9, createRate: 66.7, publishRate: 33.3, stars: 5 },
+  { name: "oMatheusdaIA", platform: "YouTube", users: 144, createRate: 41.7, publishRate: 13.9, stars: 4 },
+  { name: "Mikkel Lassalle", platform: "YouTube", users: 47, createRate: 55.3, publishRate: 10.6, stars: 4 },
+  { name: "BeerMoneyForum", platform: "YouTube", users: 34, createRate: 29.4, publishRate: 11.8, stars: 4 },
 ];
+
+const maxPublishRate = 34.2;
 
 export function SlideDB05PlatformConversion() {
   return (
     <SlideLayout>
-      <SlideHeader title="优质 KOL 表现（用户质量维度）" subtitle="后端数据库实测 | 项目发布率 = 用户真实参与最强信号" />
-      <div className="flex flex-col gap-[32px] px-[80px]">
-        {/* Quality Table */}
-        <div className="bg-muted/20 border border-border/30 rounded-xl p-[28px]">
-          <div className="grid grid-cols-[180px_100px_120px_120px_120px_100px] gap-x-[8px] text-[15px] text-muted-foreground pb-[10px] border-b border-border/40">
-            <span>KOL</span><span>平台</span><span>DB实测用户</span><span>项目创建率</span><span>项目发布率</span><span>评级</span>
-          </div>
-          {qualityKOLs.map((k, i) => (
-            <div key={k.name} className={`grid grid-cols-[180px_100px_120px_120px_120px_100px] gap-x-[8px] items-center py-[14px] text-[18px] ${i < qualityKOLs.length - 1 ? "border-b border-border/10" : ""}`}>
-              <span className="font-medium text-foreground">{k.name}</span>
-              <span className="text-muted-foreground">{k.platform}</span>
-              <span className="font-medium">{k.users}</span>
-              <span>{k.createRate}</span>
-              <span className="text-primary font-bold">{k.publishRate}</span>
-              <span className="text-yellow-400 text-[15px]">{"★".repeat(k.stars)}</span>
+      <SlideHeader section="Part 1 KOL 合作" />
+      <div className="flex-1 flex flex-col px-[120px] py-[40px] gap-[32px]">
+        <div>
+          <h2 className="text-[48px] font-bold text-foreground">四、优质 KOL 表现</h2>
+          <p className="text-[20px] text-muted-foreground mt-[8px]">通过后端数据库实测，以「项目发布率」衡量用户真实参与</p>
+        </div>
+
+        {/* Horizontal bar chart */}
+        <div className="flex-1 flex flex-col gap-[20px]">
+          {topKOLs.map((k) => (
+            <div key={k.name} className="flex items-center gap-[20px]">
+              {/* Name + platform */}
+              <div className="w-[200px] text-right">
+                <div className="text-[20px] font-bold text-foreground">{k.name}</div>
+                <div className="text-[14px] text-muted-foreground">{k.platform}</div>
+              </div>
+
+              {/* Bars */}
+              <div className="flex-1 flex flex-col gap-[4px]">
+                {/* Create rate bar */}
+                <div className="flex items-center gap-[8px]">
+                  <div className="h-[24px] rounded-[6px] bg-primary/30 flex items-center px-[8px]" style={{ width: `${(k.createRate / 70) * 100}%` }}>
+                    <span className="text-[12px] font-semibold text-primary whitespace-nowrap">创建 {k.createRate}%</span>
+                  </div>
+                </div>
+                {/* Publish rate bar */}
+                <div className="flex items-center gap-[8px]">
+                  <div className="h-[32px] rounded-[6px] flex items-center px-[10px]" style={{ width: `${(k.publishRate / maxPublishRate) * 80}%`, background: `linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))` }}>
+                    <span className="text-[14px] font-bold text-white whitespace-nowrap">发布 {k.publishRate}%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="w-[120px] text-center">
+                <div className="text-[28px] font-bold text-foreground">{k.users}</div>
+                <div className="text-[12px] text-muted-foreground">实测用户</div>
+              </div>
+
+              {/* Stars */}
+              <div className="w-[80px] text-[18px] text-primary">
+                {"★".repeat(k.stars)}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Highlights */}
-        <div className="grid grid-cols-2 gap-[24px]">
-          <div className="bg-primary/10 border border-primary/30 rounded-xl p-[24px]">
-            <div className="text-[20px] font-bold text-primary mb-[8px]">ariacodez — 质量之王</div>
-            <div className="text-[16px] text-foreground/80 leading-relaxed">
-              38 个注册用户中 13 个成功发布项目，发布率 34.2%，接近正常渠道水平。所有邮箱均为 gmail.com / hotmail.com，注册时间分布自然（平均间隔 ~13.7h）
-            </div>
+        {/* Highlight cards */}
+        <div className="flex gap-[24px]">
+          <div className="flex-1 bg-primary/10 border border-primary/30 rounded-[16px] p-[24px]">
+            <div className="text-[22px] font-bold text-primary mb-[8px]">ariacodez</div>
+            <p className="text-[16px] text-foreground">38 个注册用户中 <strong>13 个成功发布项目</strong>，发布率 34.2%。邮箱健康，注册时间分布自然（平均间隔 ~13.7 小时）。</p>
           </div>
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-[24px]">
-            <div className="text-[20px] font-bold text-blue-400 mb-[8px]">oMatheusdaIA — 流量之王</div>
-            <div className="text-[16px] text-foreground/80 leading-relaxed">
-              单 KOL 带来 144 个实测用户，20 人成功发布项目，是最大真实流量来源。虽发布率 13.9%，但绝对数量可观，建议续约
-            </div>
+          <div className="flex-1 bg-primary/10 border border-primary/30 rounded-[16px] p-[24px]">
+            <div className="text-[22px] font-bold text-primary mb-[8px]">oMatheusdaIA</div>
+            <p className="text-[16px] text-foreground">单 KOL 带来 <strong>144 个实测用户，20 人成功发布</strong>，是最大真实流量来源。建议续约。</p>
           </div>
         </div>
       </div>

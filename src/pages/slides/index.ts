@@ -49,6 +49,7 @@ export { SlideDB02KOLPart } from "./SlideDB02KOLPart";
 export { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
 export { SlideDB04Timeline } from "./SlideDB04Timeline";
 export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
+export { SlideDB06CPATop } from "./SlideDB06CPATop";
 export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
