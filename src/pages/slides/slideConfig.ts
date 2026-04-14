@@ -71,6 +71,7 @@ import { SlideDB15AITools } from "./SlideDB15AITools";
 import { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
 import { SlideDB15cExtractor } from "./SlideDB15cExtractor";
 import { SlideDB15dKOLDashboard } from "./SlideDB15dKOLDashboard";
+import { SlideDB15eAIReflection } from "./SlideDB15eAIReflection";
 import { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 import { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 import { SlideDB18End } from "./SlideDB18End";
@@ -148,6 +149,7 @@ export const slides = [
   SlideDB15bAIShowcase,
   SlideDB15cExtractor,
   SlideDB15dKOLDashboard,
+  SlideDB15eAIReflection,
   SlideDB19Suggestions,
   SlideDB20Learnings,
   SlideDB16FuturePart,
@@ -232,6 +234,7 @@ const dbSectionNames = [
   "Part 4 AI 工具", // DB15b Showcase
   "Part 4 AI 工具", // DB15c Extractor
   "Part 4 AI 工具", // DB15d KOL Dashboard
+  "Part 4 AI 工具", // DB15e AI Reflection
   "运营建议", // DB19
   "我学到了什么", // DB20
   "Part 5 未来规划", // DB16
@@ -330,6 +333,7 @@ const dbSlideTitles = [
   "AI 工具实战展示",
   "模板提取器",
   "KOL 管理后台",
+  "AI 与岗位跨越",
   "运营建议与反思",
   "我学到了什么",
   "Part 5 未来发展规划",

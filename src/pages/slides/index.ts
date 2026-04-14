@@ -69,6 +69,7 @@ export { SlideDB15AITools } from "./SlideDB15AITools";
 export { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
 export { SlideDB15cExtractor } from "./SlideDB15cExtractor";
 export { SlideDB15dKOLDashboard } from "./SlideDB15dKOLDashboard";
+export { SlideDB15eAIReflection } from "./SlideDB15eAIReflection";
 export { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 export { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 export { SlideDB18End } from "./SlideDB18End";
