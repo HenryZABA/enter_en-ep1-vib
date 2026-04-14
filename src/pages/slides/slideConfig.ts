@@ -61,6 +61,7 @@ import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
 import { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 import { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
+import { SlideDB11bPGCRevenue } from "./SlideDB11bPGCRevenue";
 import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 import { SlideDB13Activities } from "./SlideDB13Activities";
 import { SlideDB13bActivityLive } from "./SlideDB13bActivityLive";
@@ -136,6 +137,7 @@ export const slides = [
   SlideDB10bPGCShowcase,
   SlideDB10cPGCLive,
   SlideDB11PGCAIApp,
+  SlideDB11bPGCRevenue,
   SlideDB12ActivityPart,
   SlideDB13Activities,
   SlideDB13bActivityLive,
@@ -219,6 +221,7 @@ const dbSectionNames = [
   "Part 2 PGC 制作", // DB10b Showcase
   "Part 2 PGC 制作", // DB10c Live Demo
   "Part 2 PGC 制作", // DB11
+  "Part 2 PGC 制作", // DB11b Revenue
   "Part 3 运营活动", // DB12
   "Part 3 运营活动", // DB13
   "Part 3 运营活动", // DB13b Activity Live
@@ -315,6 +318,7 @@ const dbSlideTitles = [
   "PGC 自动化成果展示",
   "PGC 内容实时展示",
   "PGC 物料再利用",
+  "PGC 盈利新模式",
   "Part 3 运营活动",
   "活动总览",
   "核心活动展示",
