@@ -24,7 +24,7 @@ const steps = [
   },
 ];
 
-export default function SlideDB07cKOLLearning() {
+export function SlideDB07cKOLLearning() {
   return (
     <SlideLayout>
       <div className="h-full flex flex-col px-20 py-16">

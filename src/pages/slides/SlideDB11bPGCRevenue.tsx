@@ -1,7 +1,7 @@
 import { SlideLayout } from "@/components/slides/SlideLayout";
 import { SlideHeader } from "@/components/slides/SlideHeader";
 
-export default function SlideDB11bPGCRevenue() {
+export function SlideDB11bPGCRevenue() {
   return (
     <SlideLayout>
       <div className="h-full flex flex-col px-20 py-16">
