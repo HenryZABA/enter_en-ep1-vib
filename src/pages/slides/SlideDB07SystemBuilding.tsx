@@ -5,7 +5,7 @@ const systems = [
   {
     icon: Database,
     title: "KOL 管理系统",
-    desc: "Vibe Coding 自研：可视化追踪数据 & 状态；内部/Agency 文案审核平台；内置 Agent 导入知识库，越用越了解需求",
+    desc: "可视化追踪数据 & 状态；内部/Agency 文案审核平台；内置 Agent 导入知识库，越用越了解需求",
   },
   {
     icon: Link,
@@ -53,7 +53,6 @@ export const SlideDB07SystemBuilding = () => (
             { label: "曝光", value: "210万+", w: "100%" },
             { label: "点击", value: "4,951", w: "60%" },
             { label: "注册", value: "540", w: "30%" },
-            { label: "付费", value: "2", w: "10%" },
           ].map((step, i) => (
             <div key={step.label} className="flex-1 flex flex-col items-center gap-1">
               <div
@@ -65,17 +64,15 @@ export const SlideDB07SystemBuilding = () => (
                 </span>
               </div>
               <span className="text-xs md:text-sm text-muted-foreground">{step.label}</span>
-              {i < 3 && (
+              {i < 2 && (
                 <span className="text-xs text-muted-foreground">
-                  {i === 0 ? "→" : i === 1 ? "10.9%" : "0.4%"}
+                  {i === 0 ? "→" : "10.9%"}
                 </span>
               )}
             </div>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground">
-          * 付费转化率受产品阶段和时间滞后影响，需产品侧协同优化
-        </p>
+
       </div>
     </div>
   </SlideLayout>
