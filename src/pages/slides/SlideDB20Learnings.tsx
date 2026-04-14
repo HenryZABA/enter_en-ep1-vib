@@ -25,8 +25,8 @@ const learnings = [
   },
   {
     icon: Lightbulb,
-    title: "AI 不是工具，是协作者",
-    detail: "从使用 AI 辅助写文案，到让 AI 成为最了解业务的「同事」——知识库 + Agent + 自动化工作流的组合，让一个人能覆盖过去需要一个小团队才能完成的工作。",
+    title: "AI 不是工具，是老板",
+    detail: "未来是我们配合 AI 干活，AI 主导。知识库 + Agent + 自动化工作流的组合，让一个人能覆盖过去需要一个小团队才能完成的工作。",
     color: "text-purple-400",
     bg: "bg-purple-400/15",
   },
