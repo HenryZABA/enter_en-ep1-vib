@@ -65,6 +65,7 @@ import { SlideDB11bPGCRevenue } from "./SlideDB11bPGCRevenue";
 import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 import { SlideDB13Activities } from "./SlideDB13Activities";
 import { SlideDB13bActivityLive } from "./SlideDB13bActivityLive";
+import { SlideDB13cActivityLearning } from "./SlideDB13cActivityLearning";
 import { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
 import { SlideDB15AITools } from "./SlideDB15AITools";
 import { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
@@ -141,6 +142,7 @@ export const slides = [
   SlideDB12ActivityPart,
   SlideDB13Activities,
   SlideDB13bActivityLive,
+  SlideDB13cActivityLearning,
   SlideDB14AIToolsPart,
   SlideDB15AITools,
   SlideDB15bAIShowcase,
@@ -322,6 +324,7 @@ const dbSlideTitles = [
   "Part 3 运营活动",
   "活动总览",
   "核心活动展示",
+  "活动中学到了什么",
   "Part 4 AI 工具使用",
   "AI 工具全景",
   "AI 工具实战展示",
