@@ -44,8 +44,10 @@ export { SlideVC15End } from "./SlideVC15End";
 
 // DB Series - 转正答辩
 export { SlideDB01Cover } from "./SlideDB01Cover";
+export { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
 export { SlideDB02KOLPart } from "./SlideDB02KOLPart";
 export { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
+export { SlideDB03bQ2Budget } from "./SlideDB03bQ2Budget";
 export { SlideDB04Timeline } from "./SlideDB04Timeline";
 export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 export { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
@@ -61,6 +63,8 @@ export { SlideDB15AITools } from "./SlideDB15AITools";
 export { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 export { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 export { SlideDB18End } from "./SlideDB18End";
+export { SlideDB19Suggestions } from "./SlideDB19Suggestions";
+export { SlideDB20Learnings } from "./SlideDB20Learnings";
 
 export {
   slides,

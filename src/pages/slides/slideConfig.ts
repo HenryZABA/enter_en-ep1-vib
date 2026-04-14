@@ -44,8 +44,10 @@ import { SlideVC15End } from "./SlideVC15End";
 
 // DB Series imports - 转正答辩
 import { SlideDB01Cover } from "./SlideDB01Cover";
+import { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
 import { SlideDB02KOLPart } from "./SlideDB02KOLPart";
 import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
+import { SlideDB03bQ2Budget } from "./SlideDB03bQ2Budget";
 import { SlideDB04Timeline } from "./SlideDB04Timeline";
 import { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 import { SlideDB06StarKOLs } from "./SlideDB06StarKOLs";
@@ -61,6 +63,8 @@ import { SlideDB15AITools } from "./SlideDB15AITools";
 import { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 import { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 import { SlideDB18End } from "./SlideDB18End";
+import { SlideDB19Suggestions } from "./SlideDB19Suggestions";
+import { SlideDB20Learnings } from "./SlideDB20Learnings";
 
 // All slides in order (original + VC series)
 export const slides = [
@@ -106,10 +110,12 @@ export const slides = [
   SlideVC13Trends,
   SlideVC14Projects,
   SlideVC15End,
-  // DB Series - 转正答辩 (index 41-58)
+  // DB Series - 转正答辩 (index 41-62)
   SlideDB01Cover,
+  SlideDB01bSelfIntro,
   SlideDB02KOLPart,
   SlideDB03KOLOverview,
+  SlideDB03bQ2Budget,
   SlideDB08WorkflowOptimization,
   SlideDB04Timeline,
   SlideDB05PlatformConversion,
@@ -122,6 +128,8 @@ export const slides = [
   SlideDB13Activities,
   SlideDB14AIToolsPart,
   SlideDB15AITools,
+  SlideDB19Suggestions,
+  SlideDB20Learnings,
   SlideDB16FuturePart,
   SlideDB17FuturePlans,
   SlideDB18End,
@@ -177,11 +185,13 @@ const vcSectionNames = [
 ];
 sectionNames.push(...vcSectionNames);
 
-// DB series section names (indices 41-58)
+// DB series section names (indices 41-62)
 const dbSectionNames = [
   "", // DB01: Cover
+  "", // DB01b: Self Intro
   "Part 1 KOL 合作", // DB02
   "Part 1 KOL 合作", // DB03
+  "Part 1 KOL 合作", // DB03b Q2 Budget
   "Part 1 KOL 合作", // DB08 Workflow
   "Part 1 KOL 合作", // DB04
   "Part 1 KOL 合作", // DB05
@@ -194,6 +204,8 @@ const dbSectionNames = [
   "Part 3 运营活动", // DB13
   "Part 4 AI 工具", // DB14
   "Part 4 AI 工具", // DB15
+  "运营建议", // DB19
+  "我学到了什么", // DB20
   "Part 5 未来规划", // DB16
   "Part 5 未来规划", // DB17
   "", // DB18: End
@@ -262,11 +274,13 @@ const vcSlideTitles = [
 ];
 slideTitles.push(...vcSlideTitles);
 
-// DB series slide titles (indices 41-58)
+// DB series slide titles (indices 41-62)
 const dbSlideTitles = [
   "转正答辩",
+  "自我介绍",
   "Part 1 海外 KOL 合作",
   "KOL 项目总览",
+  "Q2 KOL 预算 & 人群画像",
   "工作流迭代与优化",
   "发布时间线 & 平台分布",
   "平台转化效率对比",
@@ -279,6 +293,8 @@ const dbSlideTitles = [
   "活动总览",
   "Part 4 AI 工具使用",
   "AI 工具全景",
+  "运营建议与反思",
+  "我学到了什么",
   "Part 5 未来发展规划",
   "未来规划",
   "谢谢",
