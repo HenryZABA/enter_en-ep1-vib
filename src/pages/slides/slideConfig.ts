@@ -61,6 +61,7 @@ import { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
 import { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
 import { SlideDB13Activities } from "./SlideDB13Activities";
+import { SlideDB13bActivityLive } from "./SlideDB13bActivityLive";
 import { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
 import { SlideDB15AITools } from "./SlideDB15AITools";
 import { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
@@ -133,6 +134,7 @@ export const slides = [
   SlideDB11PGCAIApp,
   SlideDB12ActivityPart,
   SlideDB13Activities,
+  SlideDB13bActivityLive,
   SlideDB14AIToolsPart,
   SlideDB15AITools,
   SlideDB15bAIShowcase,
@@ -213,6 +215,7 @@ const dbSectionNames = [
   "Part 2 PGC 制作", // DB11
   "Part 3 运营活动", // DB12
   "Part 3 运营活动", // DB13
+  "Part 3 运营活动", // DB13b Activity Live
   "Part 4 AI 工具", // DB14
   "Part 4 AI 工具", // DB15
   "Part 4 AI 工具", // DB15b Showcase
@@ -306,6 +309,7 @@ const dbSlideTitles = [
   "AI App 功能展示与孵化",
   "Part 3 运营活动",
   "活动总览",
+  "核心活动展示",
   "Part 4 AI 工具使用",
   "AI 工具全景",
   "AI 工具实战展示",
