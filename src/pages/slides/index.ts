@@ -51,6 +51,7 @@ export { SlideDB04Timeline } from "./SlideDB04Timeline";
 export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";
 export { SlideDB06CPATop } from "./SlideDB06CPATop";
 export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
+export { SlideDB07bKOLReflection } from "./SlideDB07bKOLReflection";
 export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 export { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";

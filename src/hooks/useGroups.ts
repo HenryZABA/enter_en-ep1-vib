@@ -8,7 +8,7 @@ export interface SlideGroup {
 
 const STORAGE_KEY = "slide-groups";
 const VERSION_KEY = "slide-groups-version";
-const CURRENT_VERSION = 15; // bump this when defaults change
+const CURRENT_VERSION = 16; // bump this when defaults change
 
 function generateId(): string {
   return crypto.randomUUID();
@@ -17,7 +17,7 @@ function generateId(): string {
 function getDefaultGroups(): SlideGroup[] {
   const originalIndices = Array.from({ length: 26 }, (_, i) => i);
   const vcIndices = Array.from({ length: 15 }, (_, i) => i + 26);
-  const dbIndices = Array.from({ length: 27 }, (_, i) => i + 41);
+  const dbIndices = Array.from({ length: 28 }, (_, i) => i + 41);
   return [
     { id: generateId(), name: "分享会", slideIndices: [...vcIndices] },
     { id: generateId(), name: "答辩", slideIndices: [...dbIndices] },
