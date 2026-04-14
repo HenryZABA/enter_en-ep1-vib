@@ -8,9 +8,6 @@ export const SlideDB02KOLPart = () => (
         海外 KOL 合作
       </h2>
       <div className="mt-4 md:mt-8 h-1 w-24 md:w-32 bg-primary rounded-full" />
-      <p className="text-xl md:text-3xl text-muted-foreground mt-6 max-w-2xl text-center">
-        从0构建 · 数据驱动 · 规模化增长
-      </p>
     </div>
   </SlideLayout>
 );

@@ -8,9 +8,6 @@ export const SlideDB12ActivityPart = () => (
         运营活动
       </h2>
       <div className="mt-4 md:mt-8 h-1 w-24 md:w-32 bg-primary rounded-full" />
-      <p className="text-xl md:text-3xl text-muted-foreground mt-6 max-w-2xl text-center">
-        从队内黑客松到 Solo Founder 专项赛
-      </p>
     </div>
   </SlideLayout>
 );

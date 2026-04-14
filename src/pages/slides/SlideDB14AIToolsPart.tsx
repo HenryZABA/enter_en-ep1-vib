@@ -8,9 +8,6 @@ export const SlideDB14AIToolsPart = () => (
         AI 工具使用
       </h2>
       <div className="mt-4 md:mt-8 h-1 w-24 md:w-32 bg-primary rounded-full" />
-      <p className="text-xl md:text-3xl text-muted-foreground mt-6 max-w-2xl text-center">
-        非技术背景，用 AI 走得更深
-      </p>
     </div>
   </SlideLayout>
 );
