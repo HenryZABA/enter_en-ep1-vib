@@ -48,6 +48,7 @@ export { SlideDB01Cover } from "./SlideDB01Cover";
 export { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
 export { SlideDB01cProblem } from "./SlideDB01cProblem";
 export { SlideDB02KOLPart } from "./SlideDB02KOLPart";
+export { SlideDB02bKOLValue } from "./SlideDB02bKOLValue";
 export { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
 export { SlideDB04Timeline } from "./SlideDB04Timeline";
 export { SlideDB05PlatformConversion } from "./SlideDB05PlatformConversion";

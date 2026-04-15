@@ -48,6 +48,7 @@ import { SlideDB01Cover } from "./SlideDB01Cover";
 import { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
 import { SlideDB01cProblem } from "./SlideDB01cProblem";
 import { SlideDB02KOLPart } from "./SlideDB02KOLPart";
+import { SlideDB02bKOLValue } from "./SlideDB02bKOLValue";
 import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
 
 import { SlideDB04Timeline } from "./SlideDB04Timeline";
@@ -131,6 +132,7 @@ export const slides = [
   SlideDB01bSelfIntro,
   SlideDB01cProblem,
   SlideDB02KOLPart,
+  SlideDB02bKOLValue,
   SlideDB03KOLOverview,
   SlideDB08WorkflowOptimization,
   SlideDB04Timeline,
@@ -220,6 +222,7 @@ const dbSectionNames = [
   "", // DB01b: Self Intro
   "", // DB01c: Problem Discovery
   "Part 1 KOL 合作", // DB02
+  "Part 1 KOL 合作", // DB02b KOL Value
   "Part 1 KOL 合作", // DB03
   "Part 1 KOL 合作", // DB08 Workflow
   "Part 1 KOL 合作", // DB04
@@ -322,6 +325,7 @@ const dbSlideTitles = [
   "自我介绍",
   "发现问题",
   "Part 1 海外 KOL 合作",
+  "KOL 的价值",
   "KOL 项目总览",
   "工作流迭代与优化",
   "发布时间线 & 平台分布",
