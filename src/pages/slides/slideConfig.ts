@@ -83,6 +83,8 @@ import { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 import { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 import { SlideDB18End } from "./SlideDB18End";
 import { SlideDB19Suggestions } from "./SlideDB19Suggestions";
+import { SlideDB19bAINative } from "./SlideDB19bAINative";
+import { SlideDB19cContentBrand } from "./SlideDB19cContentBrand";
 import { SlideDB20Learnings } from "./SlideDB20Learnings";
 
 // All slides in order (original + VC series)
@@ -165,6 +167,8 @@ export const slides = [
   SlideDB15dKOLDashboard,
   SlideDB15eAIReflection,
   SlideDB19Suggestions,
+  SlideDB19bAINative,
+  SlideDB19cContentBrand,
   SlideDB20Learnings,
   SlideDB16FuturePart,
   SlideDB17FuturePlans,
@@ -258,6 +262,8 @@ const dbSectionNames = [
   "Part 4 AI 工具", // DB15d KOL Dashboard
   "Part 4 AI 工具", // DB15e AI Reflection
   "运营建议", // DB19
+  "方向1: AI Native", // DB19b
+  "方向2: 内容品牌", // DB19c
   "我学到了什么", // DB20
   "Part 5 未来规划", // DB16
   "Part 5 未来规划", // DB17
@@ -364,6 +370,8 @@ const dbSlideTitles = [
   "KOL 管理后台",
   "AI 与岗位跨越",
   "运营提升方向",
+  "AI Native 工程化",
+  "内容品牌影响力",
   "我学到了什么",
   "Part 5 未来发展规划",
   "未来规划",

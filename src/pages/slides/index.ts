@@ -81,6 +81,8 @@ export { SlideDB16FuturePart } from "./SlideDB16FuturePart";
 export { SlideDB17FuturePlans } from "./SlideDB17FuturePlans";
 export { SlideDB18End } from "./SlideDB18End";
 export { SlideDB19Suggestions } from "./SlideDB19Suggestions";
+export { SlideDB19bAINative } from "./SlideDB19bAINative";
+export { SlideDB19cContentBrand } from "./SlideDB19cContentBrand";
 export { SlideDB20Learnings } from "./SlideDB20Learnings";
 
 export {
