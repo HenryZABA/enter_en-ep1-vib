@@ -12,7 +12,7 @@ const scenarios = [
   { 
     num: "02", 
     title: "Minimum Viable Product (MVP) validation", 
-    url: "https://f9bee0dd9d4e4157af732adb4af50c5c.prod.enter.pro/" 
+    url: "https://tutor.artdance.net/" 
   },
   { 
     num: "03", 
