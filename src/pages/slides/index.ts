@@ -58,6 +58,7 @@ export { SlideDB07bKOLReflection } from "./SlideDB07bKOLReflection";
 export { SlideDB07cKOLLearning } from "./SlideDB07cKOLLearning";
 export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
+export { SlideDB09bPGCValue } from "./SlideDB09bPGCValue";
 export { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
 export { SlideDB10dAesthetics } from "./SlideDB10dAesthetics";
 export { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";

@@ -60,6 +60,7 @@ import { SlideDB07bKOLReflection } from "./SlideDB07bKOLReflection";
 import { SlideDB07cKOLLearning } from "./SlideDB07cKOLLearning";
 import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
+import { SlideDB09bPGCValue } from "./SlideDB09bPGCValue";
 import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
 import { SlideDB10dAesthetics } from "./SlideDB10dAesthetics";
 import { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
@@ -142,6 +143,7 @@ export const slides = [
   SlideDB07bKOLReflection,
   SlideDB07cKOLLearning,
   SlideDB09PGCPart,
+  SlideDB09bPGCValue,
   SlideDB10PGCPipeline,
   SlideDB10dAesthetics,
   SlideDB10bPGCShowcase,
@@ -232,6 +234,7 @@ const dbSectionNames = [
   "Part 1 KOL 合作", // DB07b Reflection
   "Part 1 KOL 合作", // DB07c Learning
   "Part 2 PGC 制作", // DB09
+  "Part 2 PGC 制作", // DB09b PGC Value
   "Part 2 PGC 制作", // DB10 Pipeline
   "Part 2 PGC 制作", // DB10d Aesthetics
   "Part 2 PGC 制作", // DB10b Showcase
@@ -335,6 +338,7 @@ const dbSlideTitles = [
   "KOL 的意义",
   "KOL 数据驱动方法论",
   "Part 2 PGC 内容制作",
+  "PGC 的价值与现状",
   "PGC 自动化生产流程",
   "PGC 美学突破",
   "PGC 自动化成果展示",
