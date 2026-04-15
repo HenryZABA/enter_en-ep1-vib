@@ -61,6 +61,7 @@ export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 export { SlideDB09bPGCValue } from "./SlideDB09bPGCValue";
 export { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
 export { SlideDB10dAesthetics } from "./SlideDB10dAesthetics";
+export { SlideDB10eRequirements } from "./SlideDB10eRequirements";
 export { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 export { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 export { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";

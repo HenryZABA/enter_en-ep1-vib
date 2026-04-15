@@ -63,6 +63,7 @@ import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 import { SlideDB09bPGCValue } from "./SlideDB09bPGCValue";
 import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
 import { SlideDB10dAesthetics } from "./SlideDB10dAesthetics";
+import { SlideDB10eRequirements } from "./SlideDB10eRequirements";
 import { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 import { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
@@ -146,6 +147,7 @@ export const slides = [
   SlideDB09bPGCValue,
   SlideDB10PGCPipeline,
   SlideDB10dAesthetics,
+  SlideDB10eRequirements,
   SlideDB10bPGCShowcase,
   SlideDB10cPGCLive,
   SlideDB11PGCAIApp,
@@ -237,6 +239,7 @@ const dbSectionNames = [
   "Part 2 PGC 制作", // DB09b PGC Value
   "Part 2 PGC 制作", // DB10 Pipeline
   "Part 2 PGC 制作", // DB10d Aesthetics
+  "Part 2 PGC 制作", // DB10e Requirements
   "Part 2 PGC 制作", // DB10b Showcase
   "Part 2 PGC 制作", // DB10c Live Demo
   "Part 2 PGC 制作", // DB11
@@ -341,6 +344,7 @@ const dbSlideTitles = [
   "PGC 的价值与现状",
   "PGC 自动化生产流程",
   "PGC 美学突破",
+  "把需求讲明白",
   "PGC 自动化成果展示",
   "PGC 内容实时展示",
   "PGC 物料再利用",
