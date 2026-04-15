@@ -3,22 +3,23 @@ import SlideContainer from "./pages/SlideContainer";
 import Dashboard from "./pages/Dashboard";
 import GroupEditor from "./pages/GroupEditor";
 import GroupPlayer from "./pages/GroupPlayer";
+import { PasswordGate } from "./components/PasswordGate";
 
 export const routers = [
     {
       path: "/",
       name: 'home',
-      element: <Dashboard />,
+      element: <PasswordGate><Dashboard /></PasswordGate>,
     },
     {
       path: "/slide/:id",
       name: 'slide',
-      element: <SlideContainer />,
+      element: <PasswordGate><SlideContainer /></PasswordGate>,
     },
     {
       path: "/group/:groupId",
       name: 'group-editor',
-      element: <GroupEditor />,
+      element: <PasswordGate><GroupEditor /></PasswordGate>,
     },
     {
       path: "/group/:groupId/play/:slideIndex",
