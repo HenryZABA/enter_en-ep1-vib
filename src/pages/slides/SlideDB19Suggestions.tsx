@@ -1,33 +1,29 @@
 import { SlideLayout } from "@/components/slides";
 import { useState } from "react";
 
-const items = [
+const directions = [
   {
     num: "01",
-    title: "追热点的能力",
-    accent: "#f97316",
+    title: "做更加 AI Native 的东西",
+    subtitle: "KOL AI 工程化",
+    accent: "#3b82f6",
     points: [
-      "目前的爆款内容几乎都是在提前押中潜在热点，或走在热点前面",
-      "一旦热点出现，团队需要快速响应、迅速跟上",
+      { label: "流程更顺", desc: "让整个 KOL 合作流程被 AI 接管，减少人工环节" },
+      { label: "周期更短", desc: "从筛选到发布的时间大幅缩短" },
+      { label: "专属达人池", desc: "形成一片专属于 Converge AI 的达人资源" },
+      { label: "工具即产品", desc: "AI native 公司不止主要产品可以卖，工具本身也是产品" },
     ],
   },
   {
     num: "02",
-    title: "加大 PGC 宣传力度",
-    accent: "#3b82f6",
+    title: "通过内容打造品牌影响力",
+    subtitle: "Content-Driven Growth",
+    accent: "#f97316",
     points: [
-      "我们的产品力实际上非常有优势，但目前仍需要借助其他产品来带动流量",
-      "让用户看到 Enter Pro 能干什么",
-    ],
-  },
-  {
-    num: "03",
-    title: "KOL 优化方向",
-    accent: "#eab308",
-    points: [
-      "当前 KOL 池子质量参差不齐，需要寻找更优质的达人资源",
-      "重点筛选高项目发布率的 KOL，提升真实转化效率",
-      "探索新平台、新圈层的优质创作者，拓宽获客渠道",
+      { label: "通过热点把握即时流量", desc: "一旦热点出现，团队需要快速响应、迅速跟上" },
+      { label: "达人资源池做广做深", desc: "探索更多有激励机制的合作模式，与 KOL 形成共同创作叙事" },
+      { label: "需要更好的故事", desc: "要更有观点、更关注差异、赋予人设，不能散" },
+      { label: "回到数据，持续试错", desc: "接触不同类型达人、看不同合作方式的反馈，找到更有效的方法" },
     ],
   },
 ];
@@ -42,111 +38,79 @@ export const SlideDB19Suggestions = () => {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 blur-[140px] transition-all duration-700"
           style={{
-            background:
-              active !== null ? items[active].accent : "hsl(var(--primary))",
+            background: active !== null ? directions[active].accent : "hsl(var(--primary))",
           }}
         />
 
-        {/* Title area */}
+        {/* Title */}
         <div className="px-8 md:px-16 pt-6 md:pt-10 relative z-10">
           <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-muted-foreground/60 mb-2">
-            INSIGHTS & REFLECTION
+            Next Steps
           </p>
           <h1 className="text-3xl md:text-5xl font-extralight tracking-tight">
-            运营
-            <span className="font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-              建议
-            </span>
-            <span className="text-muted-foreground/40 font-extralight">
-              {" "}与反思
+            运营能提升的
+            <span className="font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+              两个方向
             </span>
           </h1>
         </div>
 
-        {/* Main content - horizontal cards */}
+        {/* Main content */}
         <div className="flex-1 flex items-center px-6 md:px-12 pb-8 relative z-10">
-          <div className="w-full flex gap-4 md:gap-5 h-[70%]">
-            {items.map((item, i) => {
+          <div className="w-full flex gap-5 h-[75%]">
+            {directions.map((dir, i) => {
               const isActive = active === i;
               return (
                 <div
-                  key={item.title}
-                  className="relative rounded-2xl border overflow-hidden transition-all duration-500 cursor-pointer"
+                  key={dir.title}
+                  className="relative rounded-2xl border overflow-hidden transition-all duration-500 cursor-pointer flex flex-col"
                   style={{
-                    flex: isActive ? 2.2 : 1,
-                    borderColor: isActive
-                      ? `${item.accent}55`
-                      : "hsl(var(--border) / 0.3)",
+                    flex: isActive ? 1.8 : 1,
+                    borderColor: isActive ? `${dir.accent}55` : "hsl(var(--border) / 0.3)",
                     background: isActive
-                      ? `linear-gradient(145deg, ${item.accent}12, transparent 50%)`
-                      : "hsl(var(--card) / 0.15)",
+                      ? `linear-gradient(135deg, ${dir.accent}08, ${dir.accent}15)`
+                      : "hsl(var(--card) / 0.3)",
                   }}
                   onMouseEnter={() => setActive(i)}
                   onMouseLeave={() => setActive(null)}
                 >
-                  {/* Large number watermark */}
-                  <span
-                    className="absolute -right-4 -bottom-8 text-[140px] md:text-[180px] font-black leading-none transition-all duration-500 select-none"
-                    style={{
-                      color: isActive
-                        ? `${item.accent}18`
-                        : `${item.accent}06`,
-                    }}
+                  {/* Watermark number */}
+                  <div
+                    className="absolute -right-4 -top-6 text-[140px] font-black leading-none select-none transition-opacity duration-500"
+                    style={{ color: isActive ? `${dir.accent}15` : "hsl(var(--foreground) / 0.03)" }}
                   >
-                    {item.num}
-                  </span>
+                    {dir.num}
+                  </div>
 
-                  <div className="relative z-10 h-full flex flex-col p-5 md:p-7">
-                    {/* Top accent bar */}
-                    <div
-                      className="h-1 rounded-full mb-5 transition-all duration-500"
-                      style={{
-                        background: `linear-gradient(90deg, ${item.accent}, transparent)`,
-                        width: isActive ? "80px" : "40px",
-                        opacity: isActive ? 1 : 0.4,
-                      }}
-                    />
-
-                    {/* Number + Title */}
-                    <div className="mb-auto">
-                      <span
-                        className="text-xs md:text-sm font-mono font-bold block mb-1 transition-colors duration-300"
-                        style={{ color: isActive ? item.accent : `${item.accent}80` }}
+                  <div className="relative z-10 p-6 md:p-8 flex flex-col h-full">
+                    {/* Direction title */}
+                    <div className="mb-6">
+                      <p
+                        className="text-xs tracking-widest uppercase mb-2 transition-colors duration-300"
+                        style={{ color: isActive ? dir.accent : "hsl(var(--muted-foreground) / 0.5)" }}
                       >
-                        {item.num}
-                      </span>
-                      <h3
-                        className="text-lg md:text-2xl font-bold transition-colors duration-300"
-                        style={{ color: isActive ? item.accent : undefined }}
-                      >
-                        {item.title}
+                        Direction {dir.num}
+                      </p>
+                      <h3 className="text-xl md:text-2xl font-semibold text-foreground/90 mb-1">
+                        {dir.title}
                       </h3>
+                      <p className="text-sm text-muted-foreground/60">{dir.subtitle}</p>
                     </div>
 
-                    {/* Points - expand on hover */}
-                    <div className="space-y-3 mt-4">
-                      {item.points.map((p, j) => (
-                        <div
-                          key={j}
-                          className="flex items-start gap-2.5 transition-all duration-500"
-                          style={{
-                            opacity: isActive ? 1 : 0.5,
-                            transform: isActive
-                              ? "translateY(0)"
-                              : "translateY(6px)",
-                            transitionDelay: isActive ? `${j * 80}ms` : "0ms",
-                          }}
-                        >
+                    {/* Points */}
+                    <div className="flex-1 flex flex-col gap-4">
+                      {dir.points.map((pt) => (
+                        <div key={pt.label} className="flex gap-3 items-start">
                           <div
-                            className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 transition-all duration-300"
-                            style={{
-                              background: item.accent,
-                              opacity: isActive ? 1 : 0.3,
-                            }}
+                            className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-colors duration-300"
+                            style={{ background: isActive ? dir.accent : "hsl(var(--primary) / 0.3)" }}
                           />
-                          <p className="text-[11px] md:text-sm text-muted-foreground leading-relaxed">
-                            {p}
-                          </p>
+                          <div>
+                            <p className="text-sm font-medium text-foreground/80">{pt.label}</p>
+                            <p className="text-xs text-muted-foreground/60 mt-0.5 leading-relaxed">
+                              {pt.desc}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>

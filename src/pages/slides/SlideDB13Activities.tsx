@@ -66,6 +66,18 @@ export const SlideDB13Activities = () => {
           <h2 className="text-[30px] font-bold tracking-tight text-foreground/90">
             三大核心活动板块
           </h2>
+          <div className="flex gap-6 mt-4">
+            {[
+              "获取高黏度用户，转换率与付费率更高",
+              "内容生产与资产沉淀，从 blog 到视频到大使闭环",
+              "验证产品与场景，用户脑洞永远比我们自己多",
+            ].map((v) => (
+              <div key={v} className="flex items-start gap-2 text-[12px] text-muted-foreground/60">
+                <span className="w-1 h-1 rounded-full bg-primary/40 mt-1.5 shrink-0" />
+                <span>{v}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Three columns */}

@@ -46,6 +46,7 @@ import { SlideVC15End } from "./SlideVC15End";
 // DB Series imports - 转正答辩
 import { SlideDB01Cover } from "./SlideDB01Cover";
 import { SlideDB01bSelfIntro } from "./SlideDB01bSelfIntro";
+import { SlideDB01cProblem } from "./SlideDB01cProblem";
 import { SlideDB02KOLPart } from "./SlideDB02KOLPart";
 import { SlideDB03KOLOverview } from "./SlideDB03KOLOverview";
 
@@ -59,6 +60,7 @@ import { SlideDB07cKOLLearning } from "./SlideDB07cKOLLearning";
 import { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 import { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 import { SlideDB10PGCPipeline } from "./SlideDB10PGCPipeline";
+import { SlideDB10dAesthetics } from "./SlideDB10dAesthetics";
 import { SlideDB10bPGCShowcase } from "./SlideDB10bPGCShowcase";
 import { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 import { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
@@ -127,6 +129,7 @@ export const slides = [
   // DB Series - 转正答辩 (index 41-62)
   SlideDB01Cover,
   SlideDB01bSelfIntro,
+  SlideDB01cProblem,
   SlideDB02KOLPart,
   SlideDB03KOLOverview,
   SlideDB08WorkflowOptimization,
@@ -138,6 +141,7 @@ export const slides = [
   SlideDB07cKOLLearning,
   SlideDB09PGCPart,
   SlideDB10PGCPipeline,
+  SlideDB10dAesthetics,
   SlideDB10bPGCShowcase,
   SlideDB10cPGCLive,
   SlideDB11PGCAIApp,
@@ -210,10 +214,11 @@ const vcSectionNames = [
 ];
 sectionNames.push(...vcSectionNames);
 
-// DB series section names (indices 41-62)
+// DB series section names
 const dbSectionNames = [
   "", // DB01: Cover
   "", // DB01b: Self Intro
+  "", // DB01c: Problem Discovery
   "Part 1 KOL 合作", // DB02
   "Part 1 KOL 合作", // DB03
   "Part 1 KOL 合作", // DB08 Workflow
@@ -224,7 +229,8 @@ const dbSectionNames = [
   "Part 1 KOL 合作", // DB07b Reflection
   "Part 1 KOL 合作", // DB07c Learning
   "Part 2 PGC 制作", // DB09
-  "Part 2 PGC 制作", // DB10
+  "Part 2 PGC 制作", // DB10 Pipeline
+  "Part 2 PGC 制作", // DB10d Aesthetics
   "Part 2 PGC 制作", // DB10b Showcase
   "Part 2 PGC 制作", // DB10c Live Demo
   "Part 2 PGC 制作", // DB11
@@ -232,6 +238,7 @@ const dbSectionNames = [
   "Part 3 运营活动", // DB12
   "Part 3 运营活动", // DB13
   "Part 3 运营活动", // DB13b Activity Live
+  "Part 3 运营活动", // DB13c Activity Learning
   "Part 4 AI 工具", // DB14
   "Part 4 AI 工具", // DB15
   "Part 4 AI 工具", // DB15b Showcase
@@ -313,6 +320,7 @@ slideTitles.push(...vcSlideTitles);
 const dbSlideTitles = [
   "转正答辩",
   "自我介绍",
+  "发现问题",
   "Part 1 海外 KOL 合作",
   "KOL 项目总览",
   "工作流迭代与优化",
@@ -324,6 +332,7 @@ const dbSlideTitles = [
   "KOL 数据驱动方法论",
   "Part 2 PGC 内容制作",
   "PGC 自动化生产流程",
+  "PGC 美学突破",
   "PGC 自动化成果展示",
   "PGC 内容实时展示",
   "PGC 物料再利用",
@@ -331,14 +340,14 @@ const dbSlideTitles = [
   "Part 3 运营活动",
   "活动总览",
   "核心活动展示",
-  "活动中学到了什么",
+  "活动执行关键点",
   "Part 4 AI 工具使用",
   "AI 工具全景",
   "AI 工具实战展示",
   "模板提取器",
   "KOL 管理后台",
   "AI 与岗位跨越",
-  "运营建议与反思",
+  "运营提升方向",
   "我学到了什么",
   "Part 5 未来发展规划",
   "未来规划",
