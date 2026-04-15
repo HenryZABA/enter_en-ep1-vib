@@ -35,19 +35,7 @@ export const SlideDB01bSelfIntro = () => (
           AI 帮我补足深度，广度让我看到更多可能性
         </p>
 
-        {/* Stats */}
-        <div className="mt-10 flex gap-12">
-          {[
-            { v: "27", l: "KOL" },
-            { v: "300+", l: "PGC" },
-            { v: "15+", l: "Skills" },
-          ].map((d) => (
-            <div key={d.l}>
-              <div className="text-[32px] font-extralight text-foreground/80 leading-none">{d.v}</div>
-              <div className="text-xs uppercase tracking-[2px] text-muted-foreground/70 mt-1.5">{d.l}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </div>
   </SlideLayout>
