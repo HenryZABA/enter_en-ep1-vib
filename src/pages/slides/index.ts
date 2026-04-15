@@ -67,6 +67,7 @@ export { SlideDB10cPGCLive } from "./SlideDB10cPGCLive";
 export { SlideDB11PGCAIApp } from "./SlideDB11PGCAIApp";
 export { SlideDB11bPGCRevenue } from "./SlideDB11bPGCRevenue";
 export { SlideDB12ActivityPart } from "./SlideDB12ActivityPart";
+export { SlideDB12bActivityValue } from "./SlideDB12bActivityValue";
 export { SlideDB13Activities } from "./SlideDB13Activities";
 export { SlideDB13bActivityLive } from "./SlideDB13bActivityLive";
 export { SlideDB13cActivityLearning } from "./SlideDB13cActivityLearning";
