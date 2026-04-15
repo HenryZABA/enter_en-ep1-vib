@@ -56,6 +56,7 @@ export { SlideDB06CPATop } from "./SlideDB06CPATop";
 export { SlideDB07SystemBuilding } from "./SlideDB07SystemBuilding";
 export { SlideDB07bKOLReflection } from "./SlideDB07bKOLReflection";
 export { SlideDB07cKOLLearning } from "./SlideDB07cKOLLearning";
+export { SlideDB07dKOLSummary } from "./SlideDB07dKOLSummary";
 export { SlideDB08WorkflowOptimization } from "./SlideDB08WorkflowOptimization";
 export { SlideDB09PGCPart } from "./SlideDB09PGCPart";
 export { SlideDB09bPGCValue } from "./SlideDB09bPGCValue";
