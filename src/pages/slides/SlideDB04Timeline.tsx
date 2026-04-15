@@ -75,9 +75,15 @@ export function SlideDB04Timeline() {
         </div>
 
         {/* Key insight */}
-        <div className="bg-primary/10 border border-primary/30 rounded-[12px] px-[24px] py-[14px] text-[18px]">
-          <span className="text-primary font-bold">核心发现：</span>
-          <span className="text-foreground">YouTube CPA $67.17，贡献 90%+ 有效注册，是当前拉新效率最高的平台</span>
+        <div className="flex gap-[12px]">
+          <div className="flex-1 bg-primary/10 border border-primary/30 rounded-[12px] px-[24px] py-[14px] text-[18px]">
+            <span className="text-primary font-bold">核心发现：</span>
+            <span className="text-foreground">YouTube CPA $67.17，贡献 90%+ 有效注册，是当前拉新效率最高的平台</span>
+          </div>
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-[12px] px-[24px] py-[14px] text-[18px] shrink-0">
+            <span className="text-amber-600 dark:text-amber-400 font-bold">挑战：</span>
+            <span className="text-foreground">光一家 Agency 池子就有 <span className="font-bold text-amber-600 dark:text-amber-400">~200</span> 达人，要挑选出最合适的</span>
+          </div>
         </div>
 
         {/* Agency comparison table */}
