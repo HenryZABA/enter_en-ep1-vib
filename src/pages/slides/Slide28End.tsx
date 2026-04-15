@@ -83,25 +83,19 @@ export const Slide28End = () => {
           {/* Upcoming Event Section */}
           <div className="p-6 rounded-2xl bg-secondary/30 border space-y-4">
             <p className="text-base md:text-lg font-semibold">
-              Wanting more? 🌟
+              Wanting more?
             </p>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              We are currently hosting another online event — more details in the WeChat group!
+              Check out our upcoming events and activities:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              <img 
-                src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100012664/e00a.png" 
-                alt="Solo Founder Brand Event" 
-                className="w-full h-auto rounded-lg border"
-                crossOrigin="anonymous"
-              />
-              <img 
-                src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100012664/cc50.png" 
-                alt="Remix Challenge Rewards" 
-                className="w-full h-auto rounded-lg border"
-                crossOrigin="anonymous"
-              />
-            </div>
+            <a
+              href="https://forum.enter.pro/activities?hl=activities"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm md:text-base font-medium text-primary underline underline-offset-4 hover:opacity-70 transition-opacity"
+            >
+              forum.enter.pro/activities
+            </a>
           </div>
         </div>
       </div>
