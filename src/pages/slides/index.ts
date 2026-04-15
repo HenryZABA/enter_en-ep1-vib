@@ -72,6 +72,7 @@ export { SlideDB12bActivityValue } from "./SlideDB12bActivityValue";
 export { SlideDB13Activities } from "./SlideDB13Activities";
 export { SlideDB13bActivityLive } from "./SlideDB13bActivityLive";
 export { SlideDB13cActivityLearning } from "./SlideDB13cActivityLearning";
+export { SlideDB13dActivityRecord } from "./SlideDB13dActivityRecord";
 export { SlideDB14AIToolsPart } from "./SlideDB14AIToolsPart";
 export { SlideDB15AITools } from "./SlideDB15AITools";
 export { SlideDB15bAIShowcase } from "./SlideDB15bAIShowcase";
