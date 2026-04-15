@@ -1,4 +1,5 @@
 export { Slide01Cover } from "./Slide01Cover";
+export { Slide02Opening } from "./Slide02Opening";
 export { Slide02WhatIsShi } from "./Slide02WhatIsShi";
 export { Slide03Preview } from "./Slide03Preview";
 export { Slide04Part1Cover } from "./Slide04Part1Cover";

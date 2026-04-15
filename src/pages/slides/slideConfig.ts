@@ -1,4 +1,5 @@
 import { Slide01Cover } from "./Slide01Cover";
+import { Slide02Opening } from "./Slide02Opening";
 import { Slide02WhatIsShi } from "./Slide02WhatIsShi";
 import { Slide03Preview } from "./Slide03Preview";
 import { Slide04Part1Cover } from "./Slide04Part1Cover";
@@ -81,6 +82,7 @@ import { SlideDB20Learnings } from "./SlideDB20Learnings";
 // All slides in order (original + VC series)
 export const slides = [
   Slide01Cover,
+  Slide02Opening,
   Slide02WhatIsShi,
   Slide03Preview,
   Slide04Part1Cover,
@@ -160,9 +162,10 @@ export const slides = [
 // Section names for each slide (empty string means no indicator)
 export const sectionNames: string[] = [
   "", // Slide 1: Cover
-  "", // Slide 2: What is Momentum
-  "", // Slide 3: Preview
-  "Part 1 Industry Trends", // Slide 4: Part 1 Cover
+  "", // Slide 2: Opening
+  "", // Slide 3: What is Momentum
+  "", // Slide 4: Preview
+  "Part 1 Industry Trends", // Slide 5: Part 1 Cover
   "Part 1 Industry Trends", // Slide 5: Evolution
   "Part 1 Industry Trends", // Slide 6: Conclusion 1
   "", // Slide 6b: What is Enter
@@ -258,6 +261,7 @@ export const slideNotes: Record<number, string> = {
 // Slide titles for browser tab
 export const slideTitles: string[] = [
   "EP1 | Vibe Coding - The Tide is Irreversible, Those Who Ride It Will Prevail",
+  "Opening",
   "What is 'Momentum'",
   "Course Overview",
   "Part 1 Industry Trends",
