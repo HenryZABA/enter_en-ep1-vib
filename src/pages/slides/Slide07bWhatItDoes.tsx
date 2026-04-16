@@ -61,7 +61,7 @@ export const Slide07bWhatItDoes = () => <SlideLayout title="What It Actually Doe
             3. AI at the core, not bolted on
           </h3>
           <p className="text-sm md:text-base leading-relaxed">
-            Every major model — <span className="font-semibold">GPT, Claude, Gemini, Grok</span> — available in one place. 
+            Every major model — <span className="font-semibold">GPT, Claude, Gemini</span> — available in one place. 
             You can even build your own AI-powered products inside <span className="font-semibold text-[#D6495AFF]">Enter</span>.
           </p>
           <p className="text-xs md:text-sm text-muted-foreground">
