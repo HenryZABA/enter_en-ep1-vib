@@ -24,6 +24,7 @@ import { Slide26Step78 } from "./Slide26Step78";
 import { Slide27Part6Cover } from "./Slide27Part6Cover";
 import { Slide27bWorkshop } from "./Slide27bWorkshop";
 import { Slide28End } from "./Slide28End";
+import { Slide28bQRCode } from "./Slide28bQRCode";
 import { Slide29Evolution } from "./Slide29Evolution";
 
 // VC Series imports
@@ -118,6 +119,7 @@ export const slides = [
   Slide29Evolution,
   Slide27bWorkshop,
   Slide28End,
+  Slide28bQRCode,
   // VC Series - 用户画像分析 (index 26-40)
   SlideVC01Cover,
   SlideVC02Part1,
@@ -207,7 +209,8 @@ export const sectionNames: string[] = [
   "", // Slide 27: Part 6 Cover
   "", // Slide 28: Evolution (duplicate)
   "", // Slide 29: Workshop Time
-  "" // Slide 30: End
+  "", // Slide 30: End
+  "",  // Slide 31: QR Code
 ];
 
 // VC series section names (indices 26-40)
@@ -317,7 +320,8 @@ export const slideTitles: string[] = [
   "Part 6 Enter Product Demo",
   "How to get started on Enter.pro",
   "Workshop Time",
-  "Thank You All"
+  "Thank You All",
+  "QR Code"
 ];
 
 // VC series slide titles (indices 26-40)

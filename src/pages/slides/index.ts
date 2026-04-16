@@ -24,6 +24,7 @@ export { Slide26Step78 } from "./Slide26Step78";
 export { Slide27Part6Cover } from "./Slide27Part6Cover";
 export { Slide27bWorkshop } from "./Slide27bWorkshop";
 export { Slide28End } from "./Slide28End";
+export { Slide28bQRCode } from "./Slide28bQRCode";
 export { Slide29Evolution } from "./Slide29Evolution";
 
 // VC Series - 用户画像分析
