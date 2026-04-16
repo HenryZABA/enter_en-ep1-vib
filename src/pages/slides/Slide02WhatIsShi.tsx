@@ -15,10 +15,6 @@ export const Slide02WhatIsShi = () => (
       {/* Body */}
       <div className="space-y-6 text-xl md:text-2xl leading-relaxed">
         <p className="text-foreground/90">
-          So what is Vibe Coding?
-        </p>
-
-        <p className="text-foreground/90">
           Vibe coding is <span className="font-bold text-[#e24d8f]">building real products</span> by just describing what you want — in plain language.
         </p>
 
