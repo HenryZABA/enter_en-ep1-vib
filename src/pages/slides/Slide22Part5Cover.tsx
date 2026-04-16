@@ -1,7 +1,7 @@
 import { SlideLayout } from "@/components/slides";
 export const Slide22Part5Cover = () => <SlideLayout title="" centerContent>
     <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6">
-      <p className="text-lg md:text-2xl font-medium text-primary tracking-wide">Part 3</p>
+      <p className="text-lg md:text-2xl font-medium text-primary tracking-wide">Part 4</p>
       <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-center whitespace-nowrap">
         How to Build a "Product" Like LEGO
       </h2>
