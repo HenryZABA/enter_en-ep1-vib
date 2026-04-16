@@ -14,12 +14,12 @@ export const routers = [
     {
       path: "/slide/:id",
       name: 'slide',
-      element: <PasswordGate><SlideContainer /></PasswordGate>,
+      element: <SlideContainer />,
     },
     {
       path: "/group/:groupId",
       name: 'group-editor',
-      element: <PasswordGate><GroupEditor /></PasswordGate>,
+      element: <GroupEditor />,
     },
     {
       path: "/group/:groupId/play/:slideIndex",
